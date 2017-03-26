@@ -4,13 +4,15 @@
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
-  (println "Hello, World")
-  (def a "FJHDKLS")
-  (println a)
+  (def action println)
+  (action "Hello, World")
+  (def a "I am learning about Clojure and functional programming!")
+  (action a)
 
   (defn hello
-    [something]
-    (println something))
-
-  (hello, "JH")
-  (println "Hello, World!"))
+    [action,something]
+    (action something))
+  (def hello-print (partial hello println))
+  ; (hello println, "hi")
+  (hello-print "Alright partials are really cool. I want to do more functional programming")
+)
