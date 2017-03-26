@@ -13,6 +13,5 @@
     [action,something]
     (action something))
   (def hello-print (partial hello println))
-  ; (hello println, "hi")
   (hello-print "Alright partials are really cool. I want to do more functional programming")
 )
