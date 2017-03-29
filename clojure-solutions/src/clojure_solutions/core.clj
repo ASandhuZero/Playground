@@ -1,6 +1,6 @@
 (ns clojure-solutions.core
-  ; (:require [clojure-solutions.Easy-277])
-  ; (:import [clojure-solutions.Easy-277 hello-277]))
+  (:require [clojure-solutions.Easy-277])
+  (:import [clojure-solutions.Easy-277 hello-277]))
   (:gen-class))
 
 (defn -main
