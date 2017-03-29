@@ -1,4 +1,4 @@
-(ns clojure-solutions.Easy_277
-  (defn hello277
-    [something]
-    (println something)))
+;TODO UNDERSTAND HOW THE FUCK NAMESPACES WORK
+(defn hello277
+  [something]
+  (println something))

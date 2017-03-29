@@ -1,5 +1,5 @@
 (ns clojure-solutions.core
-  ; (:require [clojure-solutions.Easy_277])
+  (:require [clojure-solutions.Easy_277])
   ; (:import [clojure-solutions.Easy_277 hello277])
   (:gen-class))
 
@@ -13,7 +13,7 @@
 
   (defn hello
     [action,something]
-    ; (hello277 "Hi")
+    (hello277 "OKAY I DON'T UNDERSTAND")
     (action something))
   (def hello-print (partial hello println))
   (hello-print "Alright partials are really cool. I want to do more functional programming")
