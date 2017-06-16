@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<% include partials/header %>
+        <h1><%= title %></h1>
+        <ul>
+        <% users.forEach(function(user) { %>
+            <li><%= user.first_name %> <%= user.
+            last_name %></li>
+        <% }) %>
+        </ul>
+<% include partials/footer %>
