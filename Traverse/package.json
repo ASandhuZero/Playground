@@ -7,5 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Arunpreet Sandhu",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "~4.15.3",
+    "mithril-express": "0.0.2",
+    "mithril": "~1.1.1"
+  }
 }
