@@ -72,5 +72,5 @@ body {
 }
 
 @media(max-width:568px) {
-    .navbar {display: none;}
+    .navbar-nav {display: none;}
 }
