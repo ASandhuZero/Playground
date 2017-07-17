@@ -8,6 +8,7 @@
     "start": "node app"
   },
   "dependencies": {
+    "@angular/cli": "^1.2.1",
     "bcryptjs": "*",
     "body-parser": "*",
     "cors": "*",
