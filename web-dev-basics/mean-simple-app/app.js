@@ -9,7 +9,6 @@ const config = require('./config/database');
 // Connect to Database
 mongoose.connect(config.database);
 
-
 // On Connection
 mongoose.connection.on('connected', () => {
     console.log('Connected to database ' + config.database);
@@ -33,6 +32,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Body Parser Middleware
 app.use(bodyParser.json());
+
+// Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+require('./config/passport')(passport);
 
 app.use('/users', users);
 
