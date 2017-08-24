@@ -1,16 +1,17 @@
 <template id="Test">
   <div class="Test">
-    <h1>{{ msg }}</h1>
+    <p class="lol">{{ msg }}</p>
   </div>
-
 </template>
+
+
 <script>
-export default {
-  name: 'test',
-  data () {
-    return {
-      msg: 'Test'
+  export default {
+    name: 'Test',
+    data () {
+      return {
+        msg: 'wosh'
+      }
     }
   }
-}
 </script>
