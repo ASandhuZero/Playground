@@ -1,5 +1,7 @@
+
 <template>
   <div class="hello">
+    <div v-component="test"></div>
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <ul>
