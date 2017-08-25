@@ -19,22 +19,3 @@ const router = new VueRouter({
 })
 
 export default router
-// export default new Router({
-//   routes: [
-//     {
-//       path: '/Hello',
-//       name: 'Hello',
-//       component: Hello
-//     },
-//     {
-//       path: '/',
-//       name: 'Home',
-//       component: Home
-//     },
-//     {
-//       path: '/About',
-//       name: 'About',
-//       component: About
-//     }
-//   ]
-// })
