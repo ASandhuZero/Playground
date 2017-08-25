@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div >
     <h1>Traverse</h1>
     <p>This is the home page for Traverse</p>
   </div>
