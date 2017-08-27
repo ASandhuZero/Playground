@@ -3,9 +3,22 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router/index.js'
-
-Vue.config.productionTip = false
-
+// const express = require('express')
+// const path = require('path')
+// const expressVue = require('express-vue')
+// Vue.config.productionTip = false
+//
+// const app = express()
+// const vueOptions = {
+//   rootPath: path.join(__dirname, './components'),
+//   layout: {
+//     start: '<div id="app">',
+//     end: '</div>'
+//   }
+// }
+//
+// const expressVueMiddleware = expressVue.init(vueOptions)
+// app.use(expressVueMiddleware)
 /* eslint-disable no-new */
 new Vue({
   router,
