@@ -1,0 +1,10 @@
+/home/zero/Documents/Github/Playground/Prototypes/AIIDE 2024 Generating Worlds/C# Server/obj/Debug/net8.0/C# Server.GeneratedMSBuildEditorConfig.editorconfig
+/home/zero/Documents/Github/Playground/Prototypes/AIIDE 2024 Generating Worlds/C# Server/obj/Debug/net8.0/C# Server.AssemblyInfoInputs.cache
+/home/zero/Documents/Github/Playground/Prototypes/AIIDE 2024 Generating Worlds/C# Server/obj/Debug/net8.0/C# Server.AssemblyInfo.cs
+/home/zero/Documents/Github/Playground/Prototypes/AIIDE 2024 Generating Worlds/C# Server/obj/Debug/net8.0/C# Server.csproj.CoreCompileInputs.cache
+/home/zero/Documents/Github/Playground/Prototypes/AIIDE 2024 Generating Worlds/C# Server/obj/Debug/net8.0/C# Server.sourcelink.json
+/home/zero/Documents/Github/Playground/Prototypes/AIIDE 2024 Generating Worlds/CServer/obj/Debug/net8.0/C# Server.GeneratedMSBuildEditorConfig.editorconfig
+/home/zero/Documents/Github/Playground/Prototypes/AIIDE 2024 Generating Worlds/CServer/obj/Debug/net8.0/C# Server.AssemblyInfoInputs.cache
+/home/zero/Documents/Github/Playground/Prototypes/AIIDE 2024 Generating Worlds/CServer/obj/Debug/net8.0/C# Server.AssemblyInfo.cs
+/home/zero/Documents/Github/Playground/Prototypes/AIIDE 2024 Generating Worlds/CServer/obj/Debug/net8.0/C# Server.csproj.CoreCompileInputs.cache
+/home/zero/Documents/Github/Playground/Prototypes/AIIDE 2024 Generating Worlds/CServer/obj/Debug/net8.0/C# Server.sourcelink.json

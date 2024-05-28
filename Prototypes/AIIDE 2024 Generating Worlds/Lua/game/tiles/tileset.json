@@ -1,0 +1,283 @@
+{
+    "set": {
+        "tiles": {
+            "tile": [
+                {
+                    "_name": "corner",
+                    "_symmetry": "X"
+                },
+                {
+                    "_name": "cross",
+                    "_symmetry": "X"
+                },
+                {
+                    "_name": "empty",
+                    "_symmetry": "X"
+                },
+                {
+                    "_name": "line",
+                    "_symmetry": "X"
+                },
+                {
+                    "_name": "t",
+                    "_symmetry": "X"
+                }
+            ]
+        },
+        "neighbors": {
+            "neighbor": [
+                {
+                    "_left": "corner 1",
+                    "_right": "empty"
+                },
+                {
+                    "_left": "corner",
+                    "_right": "cross"
+                },
+                {
+                    "_left": "corner",
+                    "_right": "cross 1"
+                },
+                {
+                    "_left": "corner",
+                    "_right": "line"
+                },
+                {
+                    "_left": "corner 1",
+                    "_right": "line 1"
+                },
+                {
+                    "_left": "corner",
+                    "_right": "t 2"
+                },
+                {
+                    "_left": "corner",
+                    "_right": "t 3"
+                },
+                {
+                    "_left": "corner",
+                    "_right": "t"
+                },
+                {
+                    "_left": "corner 1",
+                    "_right": "t 1"
+                },
+                {
+                    "_left": "corner 1",
+                    "_right": "corner 3"
+                },
+                {
+                    "_left": "corner 1",
+                    "_right": "corner"
+                },
+                {
+                    "_left": "corner",
+                    "_right": "corner 1"
+                },
+                {
+                    "_left": "corner",
+                    "_right": "corner 2"
+                },
+                {
+                    "_left": "cross",
+                    "_right": "cross"
+                },
+                {
+                    "_left": "cross",
+                    "_right": "cross 1"
+                },
+                {
+                    "_left": "cross 1",
+                    "_right": "cross 1"
+                },
+                {
+                    "_left": "cross",
+                    "_right": "line"
+                },
+                {
+                    "_left": "cross 1",
+                    "_right": "line"
+                },
+                {
+                    "_left": "cross",
+                    "_right": "t"
+                },
+                {
+                    "_left": "cross",
+                    "_right": "t 3"
+                },
+                {
+                    "_left": "cross 1",
+                    "_right": "t"
+                },
+                {
+                    "_left": "cross 1",
+                    "_right": "t 3"
+                },
+                {
+                    "_left": "empty",
+                    "_right": "empty"
+                },
+                {
+                    "_left": "empty",
+                    "_right": "line 1"
+                },
+                {
+                    "_left": "empty",
+                    "_right": "t 1"
+                },
+                {
+                    "_left": "line",
+                    "_right": "line"
+                },
+                {
+                    "_left": "line 1",
+                    "_right": "line 1"
+                },
+                {
+                    "_left": "line",
+                    "_right": "t"
+                },
+                {
+                    "_left": "line 1",
+                    "_right": "t 1"
+                },
+                {
+                    "_left": "line",
+                    "_right": "t 3"
+                },
+                {
+                    "_left": "t 1",
+                    "_right": "t 3"
+                },
+                {
+                    "_left": "t",
+                    "_right": "t"
+                },
+                {
+                    "_left": "t 2",
+                    "_right": "t"
+                },
+                {
+                    "_left": "t 1",
+                    "_right": "t"
+                },
+                {
+                    "_left": "t 3",
+                    "_right": "t 1"
+                }
+            ]
+        },
+        "subsets": {
+            "subset": [
+                {
+                    "tile": [
+                        {
+                            "_name": "corner"
+                        },
+                        {
+                            "_name": "cross"
+                        },
+                        {
+                            "_name": "empty"
+                        },
+                        {
+                            "_name": "line"
+                        }
+                    ],
+                    "_name": "Standard"
+                },
+                {
+                    "tile": [
+                        {
+                            "_name": "corner"
+                        },
+                        {
+                            "_name": "cross"
+                        },
+                        {
+                            "_name": "line"
+                        }
+                    ],
+                    "_name": "Dense"
+                },
+                {
+                    "tile": [
+                        {
+                            "_name": "corner"
+                        },
+                        {
+                            "_name": "empty"
+                        },
+                        {
+                            "_name": "line"
+                        }
+                    ],
+                    "_name": "Crossless"
+                },
+                {
+                    "tile": [
+                        {
+                            "_name": "t"
+                        },
+                        {
+                            "_name": "empty"
+                        }
+                    ],
+                    "_name": "TE"
+                },
+                {
+                    "tile": {
+                        "_name": "t"
+                    },
+                    "_name": "T"
+                },
+                {
+                    "tile": [
+                        {
+                            "_name": "corner"
+                        },
+                        {
+                            "_name": "line"
+                        }
+                    ],
+                    "_name": "CL"
+                },
+                {
+                    "tile": [
+                        {
+                            "_name": "corner"
+                        },
+                        {
+                            "_name": "empty"
+                        }
+                    ],
+                    "_name": "CE"
+                },
+                {
+                    "tile": {
+                        "_name": "corner"
+                    },
+                    "_name": "C"
+                },
+                {
+                    "tile": [
+                        {
+                            "_name": "cross"
+                        },
+                        {
+                            "_name": "line"
+                        }
+                    ],
+                    "_name": "Fabric"
+                },
+                {
+                    "tile": {
+                        "_name": "cross"
+                    },
+                    "_name": "Dense Fabric"
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,4 @@
+<samples>
+  <overlapping name="Water" N="3" symmetry="1" periodic="True"/>
+  <simpletiled name="Knots" size="20" screenshots="3" textOutput="True"/>
+</samples>
