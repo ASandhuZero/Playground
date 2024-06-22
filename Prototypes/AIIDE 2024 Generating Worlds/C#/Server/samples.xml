@@ -1,4 +1,5 @@
 <samples>
-  <overlapping name="Water" N="3" symmetry="1" periodic="True"/>
-  <simpletiled name="Knots" size="20" screenshots="3" textOutput="True"/>
+  <overlapping name="Rule126" N="3" symmetry="2" periodicInput="False" periodic="False"/>
+  <overlapping name="3Bricks" N="3" symmetry="1" periodic="True"/>
+  <simpletiled name="Summer" size="6" width="10" height="10" periodic="False" textOutput="True"/>
 </samples>

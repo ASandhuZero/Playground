@@ -5,7 +5,10 @@
 -- generates out all the information that we care about...
 -- Maybe, just hear me out, maybe there should be a tile *generator*
 
-require('json')
+local json = require('json')
+local utils = require('game.libs.utils')
+
+print(json, utils)
 
 -- our tiles
 tile = {}

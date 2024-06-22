@@ -39,6 +39,9 @@ class SimpleTiledModel : Model
             }
         }
 
+        //NOTE: this should be the thing that the overlapping
+        // model should understand as well. Take this code and see if 
+        // you can save it somewhere in the overlapping model
         static int[] tile(Func<int, int, int> f, int size)
         {
             int[] result = new int[size * size];
@@ -288,11 +291,6 @@ class SimpleTiledModel : Model
     // then send those results over.
     public String TileArrayOutput()
     {
-        foreach (var entry in tileMappings)
-        {
-            Console.WriteLine(entry.Key);
-            Console.WriteLine(entry.Value);
-        }
 
         var result = new System.Text.StringBuilder();
         for (int y = 0; y < MY; y++)
@@ -301,20 +299,12 @@ class SimpleTiledModel : Model
             {
                 String tilename = tilenames[observed[x + y * MX]];
                 string[] tileinfo = tilename.Split(' ');
-                foreach (var entry in tileinfo)
-                {
-                    Console.WriteLine(entry);
-                }
-                // result.Append($"{tilenames[observed[x + y * MX]]}, ");
-                // TODO: THIS WILL FAIL IF THERE ARE ANY OTHER TYPES OF 
+                // WARNING: THIS WILL FAIL IF THERE ARE ANY OTHER TYPES OF 
                 // TILE SYMMETRY THAT IS NOT X
                 result.Append($"{tileMappings[tileinfo[0]]}, ");
 
             }
         }
-
-        Console.WriteLine(result.ToString());
-
         return result.ToString();
     }
 }

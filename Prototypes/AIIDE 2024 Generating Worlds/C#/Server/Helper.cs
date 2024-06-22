@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Processing;
 using SixLabors.ImageSharp.PixelFormats;
 
 static class Helper
@@ -58,6 +59,291 @@ static class BitmapHelper
         {
             using var image = Image.WrapMemory<Bgra32>(pData, width, height);
             image.SaveAsPng(filename);
+        }
+    }
+
+
+    private static Image<Bgra32> Extract(Image<Bgra32> sourceImage, Rectangle sourceArea)
+    {
+        Image<Bgra32> targetImage = new(sourceArea.Width, sourceArea.Height);
+        int height = sourceArea.Height;
+        sourceImage.ProcessPixelRows(targetImage, (sourceAccessor, targetAccessor) =>
+        {
+            for (int i = 0; i < height; i++)
+            {
+                Span<Bgra32> sourceRow = sourceAccessor.GetRowSpan(sourceArea.Y + i);
+                Span<Bgra32> targetRow = targetAccessor.GetRowSpan(i);
+
+                sourceRow.Slice(sourceArea.X, sourceArea.Width).CopyTo(targetRow);
+            }
+        });
+
+        return targetImage;
+    }
+
+
+    private static List<Image<Bgra32>> CheckTilesForRotations(List<Image<Bgra32>> tiles, int tilesize)
+    {
+        // TODO:
+        // So for this function we are going to have to create some kind of rotation code, that way each tile_image can be rotated all four ways, and once they are rotated, we will check the rotations against the other unique tile_images. 
+        // if one of the tile_images is just a rotation, we will count that and give whatever tile_image a note about having a rotation... Maybe at this point we should
+        List<Image<Bgra32>> rotation_checked_tiles = tiles;
+        Console.WriteLine("Currently we do not check for rotations!");
+
+        return tiles;
+    }
+
+    private static List<Image<Bgra32>> GetUniqueTiles(List<Image<Bgra32>> tiles, int tilesize)
+    {
+
+        List<Image<Bgra32>> unique_tiles = new List<Image<Bgra32>>();
+
+        int number = 0;
+        foreach(var tile in tiles)
+        {
+            if (IsTileUnique(tile, unique_tiles))
+            {
+                unique_tiles.Add(tile);
+            }
+            number++;
+        }
+        Console.WriteLine($"Number of unique tiles: {unique_tiles.Count}");
+        return unique_tiles;
+    }
+
+    private static bool ComparePixels(Image<Bgra32> tile, Image<Bgra32> known_tile)
+    {
+
+        int height = tile.Height;
+        Bgra32[] pixelArray = new Bgra32[height * height];
+        tile.CopyPixelDataTo(pixelArray);
+
+        Bgra32[] comparePixelArray = new Bgra32[height * height];
+        known_tile.CopyPixelDataTo(comparePixelArray);
+
+        for (int i = 0; i < pixelArray.Length; i++)
+        {
+            if (!pixelArray[i].Equals(comparePixelArray[i]))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static bool IsTileUnique(Image<Bgra32> tile, List<Image<Bgra32>> unique_tiles)
+    {
+        if (0 == unique_tiles.Count)
+        {
+            return true;
+        }
+        foreach (var entry in unique_tiles)
+        {
+            if (ComparePixels(tile, entry))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private class Tile
+    {
+       public Bgra32 pixel_representation { get; set; }
+       public Image<Bgra32>? tile_image { get; set; }
+       public String? name { get; set; }
+
+       public override String ToString() 
+       {
+           return $"tile_image name: {name.ToString()}, tile_image image: {tile_image.ToString()}, pixel representation: {pixel_representation.ToString()}";
+
+       }
+    }
+
+    private static List<Image<Bgra32>> ExtractTiles(Image<Bgra32> sourceImage, int tilesize)
+    {
+        int _xTileAmount = sourceImage.Width/tilesize;
+        int _yTileAmount = sourceImage.Height/tilesize;
+
+        List<Image<Bgra32>> tiles = new List<Image<Bgra32>>();
+        Image<Bgra32> tile = new(sourceImage.Width, sourceImage.Height);
+
+        for (int y = 0; y < _yTileAmount; y++)
+        {
+            for (int x = 0; x < _xTileAmount; x++)
+            {
+                Rectangle sourceArea = new Rectangle(new Point(x*tilesize,y*tilesize), new Size(tilesize));
+
+                tile = Extract(sourceImage, sourceArea);
+
+                tiles.Add(tile);
+            }
+        }
+        return tiles;
+    }
+
+    private static List<Tile> MapTilesToPixels(List<Tile> tiles)
+    {
+
+        int inc = 255/tiles.Count;
+
+        for (int i = 0; i < tiles.Count; i++)
+        {
+            int val = 0 + (inc * i);
+            Bgra32 pixel = new Bgra32((byte)val, (byte)val, (byte)val);
+            tiles[i].pixel_representation = pixel;
+
+        }
+
+        return tiles;
+
+    }
+    
+    private static List<Tile> ConvertToTiles(List<Image<Bgra32>> tile_images)
+    {
+
+        List<Tile> tiles = new List<Tile>();
+
+        for (int i = 0; i < tile_images.Count; i++)
+        {
+            var image = tile_images[i];
+            var tile = new Tile();
+            tile.tile_image = image;
+            tile.name = $"tile_image {i}";
+
+            tiles.Add(tile);
+        }
+
+        return tiles;
+    }
+
+    private static Image<Bgra32> GeneratePixelBitmap(Image<Bgra32> image, int tilesize, List<Tile> tiles)
+    {
+        int _xTileAmount = image.Width/tilesize;
+        int _yTileAmount = image.Height/tilesize;
+
+
+        Image<Bgra32> tile_image = new(image.Width, image.Height);
+        Image<Bgra32> pixelBitmap = new(_xTileAmount, _yTileAmount);
+
+        for (int y = 0; y < _yTileAmount; y++)
+        {
+            for (int x = 0; x < _xTileAmount; x++)
+            {
+                Rectangle sourceArea = new Rectangle(new Point(x*tilesize,y*tilesize), new Size(tilesize));
+
+                tile_image = Extract(image, sourceArea);
+
+                Tile selected_tile = tiles[3];
+                foreach(var tile in tiles)
+                {
+                    if (ComparePixels(tile.tile_image, tile_image))
+                    {
+                        selected_tile = tile;
+                        break;
+                    }
+
+                }
+
+                pixelBitmap[x,y] = selected_tile.pixel_representation; 
+
+            }
+        }
+        return pixelBitmap;
+    }
+
+    private static Image<Bgra32> UpscaleBitmapToTilemap(Image<Bgra32> bitmap, int tilesize, List<Tile> tiles)
+    {
+        int _xTileAmount = bitmap.Width * tilesize;
+        int _yTileAmount = bitmap.Height * tilesize;
+        
+        List<Image<Bgra32>> tile_images = new List<Image<Bgra32>>();
+
+        Image<Bgra32> tilemap = new Image<Bgra32>(bitmap.Width * tilesize, bitmap.Height * tilesize); 
+        
+        for (int y = 0; y < bitmap.Height; y++)
+        {
+            for (int x = 0; x < bitmap.Width; x++)
+            {
+
+                Bgra32 pixel = bitmap[x,y];
+                foreach(var tile in tiles)
+                {
+                    if (pixel.Equals(tile.pixel_representation))
+                    {
+                        tilemap.Mutate(o => o
+                            .DrawImage(tile.tile_image, new Point(tilesize * x, tilesize * y), 1f)
+                        );
+                        break;
+                    }
+                }
+            }
+        }
+
+        return tilemap;
+    }
+
+
+    private static bool GenerateTilemapFromBitmap(String name, int width, int height, int seed)
+    {
+        int N = 2;
+        bool periodicInput = false;
+        int symmetry = 1;
+        bool ground = false;
+        bool periodic = false;
+        string heuristicString = "";
+        // var heuristic = heuristicString == "Scanline" ? Model.Heuristic.Scanline : (heuristicString == "MRV" ? Model.Heuristic.MRV : Model.Heuristic.Entropy);
+        var heuristic = Model.Heuristic.Entropy;
+        var model = new OverlappingModel(name, N, width, height, periodicInput, periodic, symmetry, ground, heuristic);
+
+        bool success = false;
+        success = model.Run(seed, -1);
+        if (success)
+        {
+            Console.WriteLine("DONE");
+            model.Save($"output/{name} {seed}.png");
+            return true;
+        }
+        Console.WriteLine("CONTRADICTION");
+        return false;
+    }
+
+    unsafe public static void CompressAndDepcompressTilemap(String name, int[] data, int width, int height, int tilesize, string filename)
+    {
+        fixed (int* pData = data)
+        {
+            Random random = new();
+            using var image = Image.WrapMemory<Bgra32>(pData, width, height);
+            var tile_images = ExtractTiles(image, tilesize);
+            var unique_tiles = GetUniqueTiles(tile_images, tilesize);
+
+            var checked_unique_tiles = CheckTilesForRotations(unique_tiles, tilesize);
+            var tiles = ConvertToTiles(checked_unique_tiles);
+
+            tiles = MapTilesToPixels(tiles);
+
+            Image<Bgra32> bitmap = GeneratePixelBitmap(image, tilesize, tiles);
+            bitmap.SaveAsPng($"samples/{name}.png");
+
+            int seed = random.Next();
+
+            bool is_map_generated = false;
+            while (!is_map_generated)
+            {
+                is_map_generated = GenerateTilemapFromBitmap(name, width/tilesize, height/tilesize, seed);
+                // NOTE: Please refactor this.
+                if(!is_map_generated)
+                {
+                    seed++;
+                }
+
+            }
+            Console.WriteLine(name);
+            using var bitmapFromModel = Image.Load<Bgra32>($"output/{name} {seed}.png");
+
+            Image<Bgra32> upscaled_image = UpscaleBitmapToTilemap(bitmapFromModel, tilesize, tiles);
+            upscaled_image.SaveAsPng("test.png");
+            Console.WriteLine($"{width/tilesize}, {height/tilesize}");
         }
     }
 }

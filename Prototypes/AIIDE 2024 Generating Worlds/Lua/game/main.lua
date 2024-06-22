@@ -4,7 +4,7 @@
 local thread    -- Our thread object.
 local timer = 0 -- A timer used to animate our circle.
 require('networking.client')
-require('tilemap')
+require('libs.tilemap')
 
 local tasks = {}
 

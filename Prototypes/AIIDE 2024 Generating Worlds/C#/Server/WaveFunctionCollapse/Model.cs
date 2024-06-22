@@ -70,6 +70,7 @@ abstract class Model
 
     public bool Run(int seed, int limit)
     {
+        // first we create the wave that we need to iterate over... 
         if (wave == null) Init();
 
         Clear();
@@ -78,15 +79,29 @@ abstract class Model
         for (int l = 0; l < limit || limit < 0; l++)
         {
             int node = NextUnobservedNode(random);
+
             if (node >= 0)
             {
                 Observe(node, random);
                 bool success = Propagate();
-                if (!success) return false;
+                if (!success)
+                {
+                    return false;
+                }
             }
             else
             {
-                for (int i = 0; i < wave.Length; i++) for (int t = 0; t < T; t++) if (wave[i][t]) { observed[i] = t; break; }
+                for (int i = 0; i < wave.Length; i++) 
+                {
+                    for (int t = 0; t < T; t++) 
+                    {
+                        if (wave[i][t]) 
+                        { 
+                            observed[i] = t; 
+                            break; 
+                        }
+                    }
+                }
                 return true;
             }
         }
@@ -152,12 +167,27 @@ abstract class Model
             {
                 int x2 = x1 + dx[d];
                 int y2 = y1 + dy[d];
-                if (!periodic && (x2 < 0 || y2 < 0 || x2 + N > MX || y2 + N > MY)) continue;
+                if (!periodic && (x2 < 0 || y2 < 0 || x2 + N > MX || y2 + N > MY)) 
+                {
+                    continue;
+                }
 
-                if (x2 < 0) x2 += MX;
-                else if (x2 >= MX) x2 -= MX;
-                if (y2 < 0) y2 += MY;
-                else if (y2 >= MY) y2 -= MY;
+                if (x2 < 0)
+                {
+                    x2 += MX;
+                }
+                else if (x2 >= MX)
+                {
+                    x2 -= MX;
+                }
+                if (y2 < 0)
+                {
+                    y2 += MY;
+                }
+                else if (y2 >= MY)
+                {
+                    y2 -= MY;
+                }
 
                 int i2 = x2 + y2 * MX;
                 int[] p = propagator[d][t1];
@@ -169,7 +199,10 @@ abstract class Model
                     int[] comp = compat[t2];
 
                     comp[d]--;
-                    if (comp[d] == 0) Ban(i2, t2);
+                    if (comp[d] == 0)
+                    {
+                        Ban(i2, t2);
+                    }
                 }
             }
         }
@@ -182,10 +215,15 @@ abstract class Model
         wave[i][t] = false;
 
         int[] comp = compatible[i][t];
-        for (int d = 0; d < 4; d++) comp[d] = 0;
+        for (int d = 0; d < 4; d++)
+        {
+            comp[d] = 0;
+        }
         stack[stacksize] = (i, t);
         stacksize++;
 
+        // if the sumOfOnes is 0 then there are no possible tiles for that position... which seems strange to me as shouldn't there be a check for all tiles? idk man, but let's go ahead and figure out this algorithm
+        // TODO: If it doesn't make sense in like 20 minutes, then consider making a small input that we can then try and figure that out with.
         sumsOfOnes[i] -= 1;
         sumsOfWeights[i] -= weights[t];
         sumsOfWeightLogWeights[i] -= weightLogWeights[t];
@@ -201,7 +239,10 @@ abstract class Model
             for (int t = 0; t < T; t++)
             {
                 wave[i][t] = true;
-                for (int d = 0; d < 4; d++) compatible[i][t][d] = propagator[opposite[d]][t].Length;
+                for (int d = 0; d < 4; d++)
+                {
+                    compatible[i][t][d] = propagator[opposite[d]][t].Length;
+                }
             }
 
             sumsOfOnes[i] = weights.Length;
@@ -216,8 +257,14 @@ abstract class Model
         {
             for (int x = 0; x < MX; x++)
             {
-                for (int t = 0; t < T - 1; t++) Ban(x + (MY - 1) * MX, t);
-                for (int y = 0; y < MY - 1; y++) Ban(x + y * MX, T - 1);
+                for (int t = 0; t < T - 1; t++)
+                {
+                    Ban(x + (MY - 1) * MX, t);
+                }
+                for (int y = 0; y < MY - 1; y++)
+                {
+                    Ban(x + y * MX, T - 1);
+                }
             }
             Propagate();
         }

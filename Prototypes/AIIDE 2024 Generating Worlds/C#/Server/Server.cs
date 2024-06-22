@@ -5,8 +5,10 @@ using System.Xml.Linq;
 using System.Text.Json;
 
 // TODO:Make sure to refactor this codebase so it's easier to navigate.
-// Honestly make sure to refactor because the code here is kind of 
-// garbage.
+// Honestly make sure to refactor this code base
+
+// WARNING: we really should have some cli input that chooses the model that 
+// we want to use
 public class Specsheet
 {
   public int width { get; set; }
@@ -24,8 +26,49 @@ public class TileArray
   public String? tiles { get; set; }
 } 
 
+//TODO: So the thing that I am trying to make right now is a image filter 
+//that takes an image in, and a tilesize for tile, and then turns that image into 
+//a map of tiles to some pixel value that we can then use to recreate the 
+//tilemap as as pixel bitmap that still contains all of the information that
+//we care about
+
+public class TileConvertor
+{
+
+  //TODO: Get a WFC model into this and then we can refactor afterwards
+  //NOTE: Steps to run through
+  public static int GenerateBitmapFromTilemap(int tilesize)
+  {
+    // TODO: Please figure out this whole name variable thing, please. 
+    // You should only have to define it in one location and that is the variable that is updated to deal with all this nonsense.
+    var name = "Summer";
+    //WARNING: this is hardcoded and could cause some issues later on
+    var (tilemap, SX, SY) = BitmapHelper.LoadBitmap($"samples/{name}.png");
+    var MX = SX;
+    var MY = SY;
+    
+    name = $"bitmap_{name}";
+    BitmapHelper.CompressAndDepcompressTilemap(name, tilemap, MX, MY, tilesize, $"output/Tiles.png");
+    return 1;
+  }
+}
+
+
 class MyTcpListener
 {
+  public void Test(int model_type)
+  {
+    
+    Specsheet testsheet = new Specsheet();
+    testsheet.width = 10;
+    testsheet.height = 10;
+    testsheet.spec = "test";
+    GenerateTilemap(testsheet, model_type);
+
+    var converted_tiles = TileConvertor.GenerateBitmapFromTilemap(48);
+    Console.WriteLine("Test has finished");
+  } 
+
   public void Start()
   {
     TcpListener server = null;
@@ -75,7 +118,10 @@ class MyTcpListener
           // TODO: Transform data into XML or json and give to WFC.
           Specsheet specData = JsonSerializer.Deserialize<Specsheet>(data);
 
-          TileArray tarray = GenerateTilemap(specData);
+          //WARNING: You're going to forget this at some point, but 
+          // this generatetilemap needs to have the commandline argument for 
+          // the model passed in, right now we are just giving it a value
+          TileArray tarray = GenerateTilemap(specData, 0);
           tarray.tiles = tarray.tiles == null ? "" : tarray.tiles;
           byte[] msg = System.Text.Encoding.ASCII.GetBytes(tarray.tiles);
 
@@ -105,8 +151,9 @@ class MyTcpListener
 
   // TODO: Change method so data from specsheet can pass in through server 
   // function callback.
-  static TileArray GenerateTilemap(Specsheet data)
+  static TileArray GenerateTilemap(Specsheet data, int model_type)
   {
+    Console.WriteLine(model_type);
     // TODO: There's got to be a better name for this I think.
     TileArray tarray = new TileArray();
     Stopwatch sw = Stopwatch.StartNew();
@@ -117,25 +164,23 @@ class MyTcpListener
     XDocument xdoc = XDocument.Load("samples.xml");
 
     // NOTE: Original line for running both overlapping and simpletiled
-    // foreach (XElement xelem in xdoc.Root.Elements("overlapping", "simpletiled"))
-    foreach (XElement xelem in xdoc.Root.Elements("simpletiled"))
+    foreach (XElement xelem in xdoc.Root.Elements("overlapping", "simpletiled"))
+    // foreach (XElement xelem in xdoc.Root.Elements("simpletiled"))
     {
       Model model;
       string name = xelem.Get<string>("name");
       Console.WriteLine($"< {name}");
 
       bool isOverlapping = xelem.Name == "overlapping";
-      int size = xelem.Get("size", isOverlapping ? 48 : 24);
-      // int width = xelem.Get("width", size);
-      // int height = xelem.Get("height", size);
+      int size = xelem.Get("tilesize", isOverlapping ? 48 : 24);
+      // int width = xelem.Get("width", tilesize);
+      // int height = xelem.Get("height", tilesize);
       int width = xelem.Get("width", data.width != 0 ? data.width : size);
       int height = xelem.Get("height", data.height != 0 ? data.height : size);
       bool periodic = xelem.Get("periodic", false);
       string heuristicString = xelem.Get<string>("heuristic");
       var heuristic = heuristicString == "Scanline" ? Model.Heuristic.Scanline : (heuristicString == "MRV" ? Model.Heuristic.MRV : Model.Heuristic.Entropy);
 
-      // TODO: The code block below is where the WFC is running and generating
-      // The tilemaps.
       if (isOverlapping)
       {
         int N = xelem.Get("N", 3);
@@ -159,7 +204,6 @@ class MyTcpListener
         {
           Console.Write("> ");
           int seed = random.Next();
-          // NOTE: This is where the WFC model is being ran.
           bool success = model.Run(seed, xelem.Get("limit", -1));
           if (success)
           {
