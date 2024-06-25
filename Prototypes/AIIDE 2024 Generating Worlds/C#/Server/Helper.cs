@@ -350,10 +350,6 @@ static class BitmapHelper
                 }
             }
 
-            foreach(var item in tiles)
-            {
-                Console.WriteLine(item.ToString());
-            }
             Image<Bgra32> bitmap = GeneratePixelBitmap(image, tilesize, tiles);
             bitmap.SaveAsPng($"samples/{bitmap_name}.png");
 
@@ -407,6 +403,7 @@ static class BitmapHelper
         var similiarity = (float)matching/(float)generated_rule_count;
         Console.WriteLine($"similiarity: {similiarity}");
         // Figure out other evaluations and why the similiarity is so low.
+        // I think that the similiarity is low because of the pattern thing... let's see how the patterns change if we change the patterns withing WEFC
 
 
     }

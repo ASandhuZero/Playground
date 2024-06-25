@@ -72,6 +72,8 @@ All of the WFC work that has come before and also some transfer learning because
 
 # Technical Description
 
+Don't forget that you run the simpletiled model first, then from there you run the overlapping code, that means that you are running both models. You then, after generating the ruleset from overlapping, you then run simpletiled once more and check the output.
+
 This section focuses on how we implemented transfer learning through WFC.
 checksum and check for collision?
 How are you going to care for rotation and orientation

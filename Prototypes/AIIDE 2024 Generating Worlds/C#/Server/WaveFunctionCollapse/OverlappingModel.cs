@@ -73,6 +73,7 @@ class OverlappingModel : Model
             }
             return result;
         };
+
         static byte[] rotate(byte[] p, int N) => pattern((x, y) => p[N - 1 - y + x * N], N);
         static byte[] reflect(byte[] p, int N) => pattern((x, y) => p[N - 1 - x + y * N], N);
 
