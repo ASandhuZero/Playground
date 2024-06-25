@@ -281,7 +281,6 @@ class SimpleTiledModel : Model
             {
                 result.Append($"{tilenames[observed[x + y * MX]]}, ");
             }
-            // result.Append(Environment.NewLine);
         }
         return result.ToString();
     }

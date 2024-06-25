@@ -172,6 +172,17 @@ So the take away for this paper is that we are attempting to see how much transf
 
 # Interesting ideas
 
+make sure to compare the output against some large language model, such as Gemini or chatgpt, to show that your rulesets contain more information from the original. I think this is going to be needed so that way I can go ahead and get that out of the bat. You can use the Max Kerminski work to show that you prompted it well enough.
+
+this paper seems most likely that it will be of use. https://repository.falmouth.ac.uk/2945/1/bare_conf.pdf
+
+Also explain that there won't be a one to one mapping because the patterns cause some issues, but that is fine as you want to explore the original WFC code.
+
+10x10 seem to have a high level of contradictions when there are a lot of pixels.
+
+One of the more interesting arguments about WFC, maybe this comes in the future work or something like that, is that it's supposed to work with small example sizes with what appears to be a relatively small pattern size... But we want to increase the learning set, I think.
+I am almost positive that you're going to have to figure out how to stitch the rules together so that way we can create more complex small NxN tilemaps
+
 If we can use this system to detect patterns, then we can let the developer of the tilemap know that there are these frequent patterns in there tilemaps
 
 Effectively this research project is working towards the idea of "autocomplete" for tilemap generation. 

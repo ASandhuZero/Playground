@@ -26,29 +26,28 @@ public class TileArray
   public String? tiles { get; set; }
 } 
 
-//TODO: So the thing that I am trying to make right now is a image filter 
-//that takes an image in, and a tilesize for tile, and then turns that image into 
-//a map of tiles to some pixel value that we can then use to recreate the 
-//tilemap as as pixel bitmap that still contains all of the information that
-//we care about
-
 public class TileConvertor
 {
 
-  //TODO: Get a WFC model into this and then we can refactor afterwards
-  //NOTE: Steps to run through
   public static int GenerateBitmapFromTilemap(int tilesize)
   {
-    // TODO: Please figure out this whole name variable thing, please. 
-    // You should only have to define it in one location and that is the variable that is updated to deal with all this nonsense.
-    var name = "Summer";
-    //WARNING: this is hardcoded and could cause some issues later on
-    var (tilemap, SX, SY) = BitmapHelper.LoadBitmap($"samples/{name}.png");
-    var MX = SX;
-    var MY = SY;
-    
-    name = $"bitmap_{name}";
-    BitmapHelper.CompressAndDepcompressTilemap(name, tilemap, MX, MY, tilesize, $"output/Tiles.png");
+    // TODO: the code below needs some heavy refactoring, but we will do that after the paper gets submitted.
+    for(int i = 10; i <= 40; i=i+10)
+    {
+      var name = $"Summer {i}x{i}";
+      Console.WriteLine($"< {name}");
+
+      //WARNING: this is hardcoded and could cause some issues later on
+      var (tilemap, SX, SY) = BitmapHelper.LoadBitmap($"output/{name}.png");
+      var MX = SX;
+      var MY = SY;
+      // Continue. I don't know what is going on but something is happening
+      // now that I am trying to use this nonsense solution... I think that I need to 
+      BitmapHelper.CompressAndDepcompressTilemap(name, tilemap, MX, MY, tilesize, $"output/Tiles.png");
+    }
+
+    // Now we need
+
     return 1;
   }
 }
@@ -63,10 +62,17 @@ class MyTcpListener
     testsheet.width = 10;
     testsheet.height = 10;
     testsheet.spec = "test";
+    // okay so test needs to change and the way to change it is like this:
+    // This function should only generate one tile map... 
+    // then we should have some for loop that is calling the generatetilemap code, inputting the names of the tilemap to generate, or they are generated through the model
+    // TODO: Remember to add back in the code below.
     GenerateTilemap(testsheet, model_type);
 
     var converted_tiles = TileConvertor.GenerateBitmapFromTilemap(48);
+    // I think this needs to be rewritten.
+    // as in that we shoudl firs
     Console.WriteLine("Test has finished");
+    BitmapHelper.GetRuleSimiliarity();
   } 
 
   public void Start()
@@ -121,7 +127,7 @@ class MyTcpListener
           //WARNING: You're going to forget this at some point, but 
           // this generatetilemap needs to have the commandline argument for 
           // the model passed in, right now we are just giving it a value
-          TileArray tarray = GenerateTilemap(specData, 0);
+          TileArray tarray = GenerateTilemap(specData, 0); // This is the tilemap that is returned to Love2D
           tarray.tiles = tarray.tiles == null ? "" : tarray.tiles;
           byte[] msg = System.Text.Encoding.ASCII.GetBytes(tarray.tiles);
 
@@ -158,14 +164,12 @@ class MyTcpListener
     TileArray tarray = new TileArray();
     Stopwatch sw = Stopwatch.StartNew();
     var folder = System.IO.Directory.CreateDirectory("output");
-    foreach (var file in folder.GetFiles()) file.Delete();
+    foreach (var file in folder.GetFiles()) { file.Delete(); }
 
     Random random = new();
     XDocument xdoc = XDocument.Load("samples.xml");
 
-    // NOTE: Original line for running both overlapping and simpletiled
     foreach (XElement xelem in xdoc.Root.Elements("overlapping", "simpletiled"))
-    // foreach (XElement xelem in xdoc.Root.Elements("simpletiled"))
     {
       Model model;
       string name = xelem.Get<string>("name");
@@ -173,8 +177,6 @@ class MyTcpListener
 
       bool isOverlapping = xelem.Name == "overlapping";
       int size = xelem.Get("tilesize", isOverlapping ? 48 : 24);
-      // int width = xelem.Get("width", tilesize);
-      // int height = xelem.Get("height", tilesize);
       int width = xelem.Get("width", data.width != 0 ? data.width : size);
       int height = xelem.Get("height", data.height != 0 ? data.height : size);
       bool periodic = xelem.Get("periodic", false);
@@ -208,7 +210,7 @@ class MyTcpListener
           if (success)
           {
             Console.WriteLine("DONE");
-            model.Save($"output/{name} {seed}.png");
+            model.Save($"output/{name} {width}x{height}.png");
             if (model is SimpleTiledModel stmodel && xelem.Get("textOutput", false))
             {
               System.IO.File.WriteAllText($"output/{name} {seed}.txt", stmodel.TextOutput());

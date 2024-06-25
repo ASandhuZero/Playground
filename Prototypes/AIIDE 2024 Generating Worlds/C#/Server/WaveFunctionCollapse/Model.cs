@@ -71,7 +71,10 @@ abstract class Model
     public bool Run(int seed, int limit)
     {
         // first we create the wave that we need to iterate over... 
-        if (wave == null) Init();
+        if (wave == null) 
+        {
+            Init();
+        }
 
         Clear();
         Random random = new(seed);
@@ -79,7 +82,6 @@ abstract class Model
         for (int l = 0; l < limit || limit < 0; l++)
         {
             int node = NextUnobservedNode(random);
-
             if (node >= 0)
             {
                 Observe(node, random);
@@ -206,7 +208,6 @@ abstract class Model
                 }
             }
         }
-
         return sumsOfOnes[0] > 0;
     }
 

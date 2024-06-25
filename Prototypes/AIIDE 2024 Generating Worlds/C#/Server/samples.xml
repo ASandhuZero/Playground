@@ -1,5 +1,6 @@
 <samples>
-  <overlapping name="Rule126" N="3" symmetry="2" periodicInput="False" periodic="False"/>
-  <overlapping name="3Bricks" N="3" symmetry="1" periodic="True"/>
   <simpletiled name="Summer" size="6" width="10" height="10" periodic="False" textOutput="True"/>
+  <simpletiled name="Summer" size="6" width="20" height="20" periodic="False" textOutput="True"/>
+  <simpletiled name="Summer" size="6" width="30" height="30" periodic="False" textOutput="True"/>
+  <simpletiled name="Summer" size="6" width="40" height="40" periodic="False" textOutput="True"/>
 </samples>

@@ -23,6 +23,8 @@ Right now I am focusing on recreating the overlapping model into something that 
 Right now I am doing the rewriting of the overlapping model in tilemapping, and the reason I need to do this is because I don't know how to change the resolution of the overlapping model to work in the way that I want it to.
 I guess the easiest way would be to create convolution layer that will transpose the tilemap into a pixel bitmap that we can send through the overlapping model.
 
+- [ ] Create a way for WFC to learn from a set of images.
+
 - [ ] Figure out how the overlapping model generates the association
 - [ ] Save these associations in some data format for later use
 - [ ] Use the associations to create new rule sets that can then be fed into WFC
