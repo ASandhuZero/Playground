@@ -118,6 +118,7 @@ class SimpleTiledModel : Model
             {
                 map[t] = new int[8];
 
+                // thiis where the additional rules are most likely generated as well.
                 map[t][0] = t;
                 map[t][1] = a(t);
                 map[t][2] = a(a(t));
@@ -187,6 +188,7 @@ class SimpleTiledModel : Model
 
             if (subset != null && (!subset.Contains(left[0]) || !subset.Contains(right[0]))) continue;
 
+            // There are additional rules here 
             int L = action[firstOccurrence[left[0]]][left.Length == 1 ? 0 : int.Parse(left[1])], D = action[L][1];
             int R = action[firstOccurrence[right[0]]][right.Length == 1 ? 0 : int.Parse(right[1])], U = action[R][1];
 

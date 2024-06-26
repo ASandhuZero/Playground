@@ -1,0 +1,612 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<set unique="True">
+  <tiles>
+    <tile name="0" symmetry="X"/>
+    <tile name="1" symmetry="X"/>
+    <tile name="2" symmetry="X"/>
+    <tile name="3" symmetry="X"/>
+    <tile name="4" symmetry="X"/>
+    <tile name="5" symmetry="X"/>
+    <tile name="6" symmetry="X"/>
+    <tile name="7" symmetry="X"/>
+    <tile name="8" symmetry="X"/>
+    <tile name="9" symmetry="X"/>
+    <tile name="10" symmetry="X"/>
+    <tile name="11" symmetry="X"/>
+    <tile name="12" symmetry="X"/>
+    <tile name="13" symmetry="X"/>
+    <tile name="14" symmetry="X"/>
+    <tile name="15" symmetry="X"/>
+    <tile name="16" symmetry="X"/>
+    <tile name="17" symmetry="X"/>
+    <tile name="18" symmetry="X"/>
+    <tile name="19" symmetry="X"/>
+    <tile name="20" symmetry="X"/>
+    <tile name="21" symmetry="X"/>
+    <tile name="22" symmetry="X"/>
+    <tile name="23" symmetry="X"/>
+    <tile name="24" symmetry="X"/>
+    <tile name="25" symmetry="X"/>
+    <tile name="26" symmetry="X"/>
+    <tile name="27" symmetry="X"/>
+    <tile name="28" symmetry="X"/>
+    <tile name="29" symmetry="X"/>
+    <tile name="30" symmetry="X"/>
+    <tile name="31" symmetry="X"/>
+    <tile name="32" symmetry="X"/>
+    <tile name="33" symmetry="X"/>
+    <tile name="34" symmetry="X"/>
+    <tile name="35" symmetry="X"/>
+    <tile name="36" symmetry="X"/>
+    <tile name="37" symmetry="X"/>
+    <tile name="38" symmetry="X"/>
+    <tile name="39" symmetry="X"/>
+    <tile name="40" symmetry="X"/>
+    <tile name="41" symmetry="X"/>
+    <tile name="42" symmetry="X"/>
+    <tile name="43" symmetry="X"/>
+    <tile name="44" symmetry="X"/>
+    <tile name="45" symmetry="X"/>
+    <tile name="46" symmetry="X"/>
+    <tile name="47" symmetry="X"/>
+    <tile name="48" symmetry="X"/>
+    <tile name="49" symmetry="X"/>
+    <tile name="50" symmetry="X"/>
+    <tile name="51" symmetry="X"/>
+    <tile name="52" symmetry="X"/>
+    <tile name="53" symmetry="X"/>
+    <tile name="54" symmetry="X"/>
+    <tile name="55" symmetry="X"/>
+    <tile name="56" symmetry="X"/>
+    <tile name="57" symmetry="X"/>
+    <tile name="58" symmetry="X"/>
+    <tile name="59" symmetry="X"/>
+    <tile name="60" symmetry="X"/>
+    <tile name="61" symmetry="X"/>
+    <tile name="62" symmetry="X"/>
+    <tile name="63" symmetry="X"/>
+    <tile name="64" symmetry="X"/>
+    <tile name="65" symmetry="X"/>
+    <tile name="66" symmetry="X"/>
+    <tile name="67" symmetry="X"/>
+    <tile name="68" symmetry="X"/>
+    <tile name="69" symmetry="X"/>
+    <tile name="70" symmetry="X"/>
+    <tile name="71" symmetry="X"/>
+    <tile name="72" symmetry="X"/>
+    <tile name="73" symmetry="X"/>
+    <tile name="74" symmetry="X"/>
+    <tile name="75" symmetry="X"/>
+    <tile name="76" symmetry="X"/>
+    <tile name="77" symmetry="X"/>
+    <tile name="78" symmetry="X"/>
+    <tile name="79" symmetry="X"/>
+    <tile name="80" symmetry="X"/>
+    <tile name="81" symmetry="X"/>
+    <tile name="82" symmetry="X"/>
+    <tile name="83" symmetry="X"/>
+    <tile name="84" symmetry="X"/>
+    <tile name="86" symmetry="X"/>
+    <tile name="88" symmetry="X"/>
+    <tile name="89" symmetry="X"/>
+    <tile name="94" symmetry="X"/>
+    <tile name="95" symmetry="X"/>
+    <tile name="97" symmetry="X"/>
+    <tile name="98" symmetry="X"/>
+    <tile name="99" symmetry="X"/>
+    <tile name="100" symmetry="X"/>
+    <tile name="101" symmetry="X"/>
+    <tile name="103" symmetry="X"/>
+    <tile name="104" symmetry="X"/>
+    <tile name="105" symmetry="X"/>
+    <tile name="106" symmetry="X"/>
+    <tile name="107" symmetry="X"/>
+    <tile name="108" symmetry="X"/>
+    <tile name="109" symmetry="X"/>
+    <tile name="110" symmetry="X"/>
+    <tile name="111" symmetry="X"/>
+    <tile name="112" symmetry="X"/>
+    <tile name="113" symmetry="X"/>
+    <tile name="114" symmetry="X"/>
+    <tile name="116" symmetry="X"/>
+    <tile name="117" symmetry="X"/>
+    <tile name="118" symmetry="X"/>
+    <tile name="119" symmetry="X"/>
+    <tile name="120" symmetry="X"/>
+    <tile name="121" symmetry="X"/>
+    <tile name="122" symmetry="X"/>
+    <tile name="123" symmetry="X"/>
+    <tile name="124" symmetry="X"/>
+    <tile name="125" symmetry="X"/>
+    <tile name="126" symmetry="X"/>
+    <tile name="127" symmetry="X"/>
+    <tile name="128" symmetry="X"/>
+    <tile name="129" symmetry="X"/>
+    <tile name="130" symmetry="X"/>
+    <tile name="131" symmetry="X"/>
+    <tile name="132" symmetry="X"/>
+    <tile name="133" symmetry="X"/>
+    <tile name="134" symmetry="X"/>
+    <tile name="136" symmetry="X"/>
+    <tile name="137" symmetry="X"/>
+    <tile name="138" symmetry="X"/>
+    <tile name="139" symmetry="X"/>
+    <tile name="140" symmetry="X"/>
+    <tile name="141" symmetry="X"/>
+    <tile name="142" symmetry="X"/>
+    <tile name="143" symmetry="X"/>
+    <tile name="147" symmetry="X"/>
+    <tile name="148" symmetry="X"/>
+    <tile name="149" symmetry="X"/>
+    <tile name="150" symmetry="X"/>
+  </tiles>
+  <neighbors>
+    <neighbor left="0 0" right="0 0" />
+    <neighbor left="0 0" right="1 0" />
+    <neighbor left="0 0" right="18 0" />
+    <neighbor left="0 0" right="30 0" />
+    <neighbor left="0 0" right="47 0" />
+    <neighbor left="0 0" right="89 0" />
+    <neighbor left="0 0" right="94 0" />
+    <neighbor left="0 0" right="99 0" />
+    <neighbor left="1 0" right="2 0" />
+    <neighbor left="1 0" right="4 0" />
+    <neighbor left="1 0" right="38 0" />
+    <neighbor left="1 0" right="99 0" />
+    <neighbor left="2 0" right="2 0" />
+    <neighbor left="2 0" right="3 0" />
+    <neighbor left="2 0" right="4 0" />
+    <neighbor left="2 0" right="38 0" />
+    <neighbor left="2 0" right="108 0" />
+    <neighbor left="2 0" right="72 0" />
+    <neighbor left="2 0" right="131 0" />
+    <neighbor left="3 0" right="0 0" />
+    <neighbor left="3 0" right="1 0" />
+    <neighbor left="3 0" right="47 0" />
+    <neighbor left="3 0" right="30 0" />
+    <neighbor left="3 0" right="18 0" />
+    <neighbor left="4 0" right="5 0" />
+    <neighbor left="4 0" right="9 0" />
+    <neighbor left="4 0" right="17 0" />
+    <neighbor left="4 0" right="24 0" />
+    <neighbor left="4 0" right="35 0" />
+    <neighbor left="4 0" right="34 0" />
+    <neighbor left="4 0" right="109 0" />
+    <neighbor left="4 0" right="100 0" />
+    <neighbor left="4 0" right="12 0" />
+    <neighbor left="5 0" right="6 0" />
+    <neighbor left="5 0" right="11 0" />
+    <neighbor left="5 0" right="19 0" />
+    <neighbor left="5 0" right="9 0" />
+    <neighbor left="6 0" right="6 0" />
+    <neighbor left="6 0" right="7 0" />
+    <neighbor left="6 0" right="11 0" />
+    <neighbor left="6 0" right="78 0" />
+    <neighbor left="6 0" right="12 0" />
+    <neighbor left="7 0" right="8 0" />
+    <neighbor left="7 0" right="10 0" />
+    <neighbor left="7 0" right="58 0" />
+    <neighbor left="7 0" right="62 0" />
+    <neighbor left="7 0" right="65 0" />
+    <neighbor left="7 0" right="60 0" />
+    <neighbor left="8 0" right="2 0" />
+    <neighbor left="8 0" right="3 0" />
+    <neighbor left="8 0" right="4 0" />
+    <neighbor left="8 0" right="57 0" />
+    <neighbor left="8 0" right="72 0" />
+    <neighbor left="8 0" right="38 0" />
+    <neighbor left="8 0" right="108 0" />
+    <neighbor left="9 0" right="6 0" />
+    <neighbor left="9 0" right="9 0" />
+    <neighbor left="9 0" right="11 0" />
+    <neighbor left="9 0" right="12 0" />
+    <neighbor left="9 0" right="17 0" />
+    <neighbor left="9 0" right="22 0" />
+    <neighbor left="9 0" right="28 0" />
+    <neighbor left="9 0" right="10 0" />
+    <neighbor left="9 0" right="39 0" />
+    <neighbor left="9 0" right="13 0" />
+    <neighbor left="9 0" right="48 0" />
+    <neighbor left="9 0" right="40 0" />
+    <neighbor left="9 0" right="8 0" />
+    <neighbor left="9 0" right="50 0" />
+    <neighbor left="9 0" right="52 0" />
+    <neighbor left="9 0" right="64 0" />
+    <neighbor left="9 0" right="46 0" />
+    <neighbor left="9 0" right="75 0" />
+    <neighbor left="9 0" right="79 0" />
+    <neighbor left="9 0" right="81 0" />
+    <neighbor left="9 0" right="125 0" />
+    <neighbor left="9 0" right="104 0" />
+    <neighbor left="9 0" right="119 0" />
+    <neighbor left="9 0" right="58 0" />
+    <neighbor left="9 0" right="16 0" />
+    <neighbor left="9 0" right="68 0" />
+    <neighbor left="9 0" right="65 0" />
+    <neighbor left="9 0" right="62 0" />
+    <neighbor left="9 0" right="126 0" />
+    <neighbor left="9 0" right="140 0" />
+    <neighbor left="9 0" right="141 0" />
+    <neighbor left="9 0" right="143 0" />
+    <neighbor left="9 0" right="41 0" />
+    <neighbor left="9 0" right="147 0" />
+    <neighbor left="9 0" right="15 0" />
+    <neighbor left="9 0" right="78 0" />
+    <neighbor left="10 0" right="0 0" />
+    <neighbor left="10 0" right="1 0" />
+    <neighbor left="10 0" right="18 0" />
+    <neighbor left="11 0" right="9 0" />
+    <neighbor left="11 0" right="11 0" />
+    <neighbor left="11 0" right="6 0" />
+    <neighbor left="11 0" right="12 0" />
+    <neighbor left="11 0" right="15 0" />
+    <neighbor left="11 0" right="7 0" />
+    <neighbor left="11 0" right="16 0" />
+    <neighbor left="11 0" right="33 0" />
+    <neighbor left="11 0" right="45 0" />
+    <neighbor left="11 0" right="17 0" />
+    <neighbor left="11 0" right="68 0" />
+    <neighbor left="11 0" right="41 0" />
+    <neighbor left="11 0" right="50 0" />
+    <neighbor left="11 0" right="71 0" />
+    <neighbor left="11 0" right="79 0" />
+    <neighbor left="11 0" right="19 0" />
+    <neighbor left="11 0" right="84 0" />
+    <neighbor left="11 0" right="86 0" />
+    <neighbor left="11 0" right="106 0" />
+    <neighbor left="11 0" right="104 0" />
+    <neighbor left="11 0" right="110 0" />
+    <neighbor left="11 0" right="124 0" />
+    <neighbor left="11 0" right="142 0" />
+    <neighbor left="11 0" right="8 0" />
+    <neighbor left="12 0" right="13 0" />
+    <neighbor left="12 0" right="12 0" />
+    <neighbor left="12 0" right="11 0" />
+    <neighbor left="12 0" right="14 0" />
+    <neighbor left="12 0" right="17 0" />
+    <neighbor left="12 0" right="9 0" />
+    <neighbor left="12 0" right="27 0" />
+    <neighbor left="12 0" right="36 0" />
+    <neighbor left="12 0" right="28 0" />
+    <neighbor left="12 0" right="8 0" />
+    <neighbor left="12 0" right="55 0" />
+    <neighbor left="12 0" right="46 0" />
+    <neighbor left="12 0" right="119 0" />
+    <neighbor left="12 0" right="133 0" />
+    <neighbor left="12 0" right="40 0" />
+    <neighbor left="12 0" right="138 0" />
+    <neighbor left="12 0" right="150 0" />
+    <neighbor left="12 0" right="6 0" />
+    <neighbor left="12 0" right="16 0" />
+    <neighbor left="12 0" right="68 0" />
+    <neighbor left="12 0" right="81 0" />
+    <neighbor left="13 0" right="14 0" />
+    <neighbor left="13 0" right="12 0" />
+    <neighbor left="13 0" right="9 0" />
+    <neighbor left="14 0" right="8 0" />
+    <neighbor left="14 0" right="10 0" />
+    <neighbor left="14 0" right="58 0" />
+    <neighbor left="14 0" right="62 0" />
+    <neighbor left="14 0" right="60 0" />
+    <neighbor left="15 0" right="9 0" />
+    <neighbor left="16 0" right="22 0" />
+    <neighbor left="16 0" right="60 0" />
+    <neighbor left="16 0" right="62 0" />
+    <neighbor left="16 0" right="58 0" />
+    <neighbor left="16 0" right="28 0" />
+    <neighbor left="16 0" right="75 0" />
+    <neighbor left="16 0" right="10 0" />
+    <neighbor left="17 0" right="17 0" />
+    <neighbor left="17 0" right="12 0" />
+    <neighbor left="17 0" right="22 0" />
+    <neighbor left="17 0" right="11 0" />
+    <neighbor left="17 0" right="10 0" />
+    <neighbor left="17 0" right="9 0" />
+    <neighbor left="17 0" right="28 0" />
+    <neighbor left="17 0" right="8 0" />
+    <neighbor left="17 0" right="60 0" />
+    <neighbor left="17 0" right="67 0" />
+    <neighbor left="17 0" right="40 0" />
+    <neighbor left="17 0" right="100 0" />
+    <neighbor left="17 0" right="110 0" />
+    <neighbor left="17 0" right="121 0" />
+    <neighbor left="17 0" right="41 0" />
+    <neighbor left="17 0" right="50 0" />
+    <neighbor left="17 0" right="126 0" />
+    <neighbor left="17 0" right="125 0" />
+    <neighbor left="17 0" right="104 0" />
+    <neighbor left="17 0" right="78 0" />
+    <neighbor left="17 0" right="46 0" />
+    <neighbor left="17 0" right="119 0" />
+    <neighbor left="17 0" right="68 0" />
+    <neighbor left="17 0" right="33 0" />
+    <neighbor left="17 0" right="81 0" />
+    <neighbor left="18 0" right="5 0" />
+    <neighbor left="18 0" right="9 0" />
+    <neighbor left="18 0" right="32 0" />
+    <neighbor left="18 0" right="34 0" />
+    <neighbor left="18 0" right="17 0" />
+    <neighbor left="18 0" right="35 0" />
+    <neighbor left="18 0" right="44 0" />
+    <neighbor left="18 0" right="49 0" />
+    <neighbor left="18 0" right="76 0" />
+    <neighbor left="18 0" right="78 0" />
+    <neighbor left="18 0" right="100 0" />
+    <neighbor left="18 0" right="110 0" />
+    <neighbor left="18 0" right="24 0" />
+    <neighbor left="18 0" right="130 0" />
+    <neighbor left="18 0" right="80 0" />
+    <neighbor left="19 0" right="20 0" />
+    <neighbor left="20 0" right="83 0" />
+    <neighbor left="20 0" right="21 0" />
+    <neighbor left="21 0" right="74 0" />
+    <neighbor left="22 0" right="23 0" />
+    <neighbor left="22 0" right="25 0" />
+    <neighbor left="22 0" right="66 0" />
+    <neighbor left="22 0" right="73 0" />
+    <neighbor left="22 0" right="26 0" />
+    <neighbor left="22 0" right="116 0" />
+    <neighbor left="22 0" right="129 0" />
+    <neighbor left="23 0" right="0 0" />
+    <neighbor left="23 0" right="47 0" />
+    <neighbor left="23 0" right="1 0" />
+    <neighbor left="23 0" right="18 0" />
+    <neighbor left="24 0" right="11 0" />
+    <neighbor left="25 0" right="26 0" />
+    <neighbor left="25 0" right="25 0" />
+    <neighbor left="25 0" right="23 0" />
+    <neighbor left="25 0" right="66 0" />
+    <neighbor left="25 0" right="73 0" />
+    <neighbor left="25 0" right="129 0" />
+    <neighbor left="25 0" right="31 0" />
+    <neighbor left="25 0" right="116 0" />
+    <neighbor left="26 0" right="44 0" />
+    <neighbor left="26 0" right="49 0" />
+    <neighbor left="26 0" right="34 0" />
+    <neighbor left="26 0" right="24 0" />
+    <neighbor left="26 0" right="9 0" />
+    <neighbor left="26 0" right="11 0" />
+    <neighbor left="26 0" right="80 0" />
+    <neighbor left="26 0" right="78 0" />
+    <neighbor left="26 0" right="109 0" />
+    <neighbor left="26 0" right="17 0" />
+    <neighbor left="27 0" right="22 0" />
+    <neighbor left="27 0" right="62 0" />
+    <neighbor left="28 0" right="29 0" />
+    <neighbor left="28 0" right="37 0" />
+    <neighbor left="28 0" right="56 0" />
+    <neighbor left="28 0" right="69 0" />
+    <neighbor left="28 0" right="61 0" />
+    <neighbor left="29 0" right="0 0" />
+    <neighbor left="30 0" right="31 0" />
+    <neighbor left="30 0" right="56 0" />
+    <neighbor left="31 0" right="34 0" />
+    <neighbor left="31 0" right="17 0" />
+    <neighbor left="31 0" right="9 0" />
+    <neighbor left="31 0" right="24 0" />
+    <neighbor left="31 0" right="11 0" />
+    <neighbor left="31 0" right="78 0" />
+    <neighbor left="31 0" right="12 0" />
+    <neighbor left="31 0" right="109 0" />
+    <neighbor left="32 0" right="12 0" />
+    <neighbor left="32 0" right="6 0" />
+    <neighbor left="33 0" right="8 0" />
+    <neighbor left="33 0" right="10 0" />
+    <neighbor left="33 0" right="58 0" />
+    <neighbor left="33 0" right="65 0" />
+    <neighbor left="33 0" right="28 0" />
+    <neighbor left="33 0" right="75 0" />
+    <neighbor left="33 0" right="62 0" />
+    <neighbor left="33 0" right="22 0" />
+    <neighbor left="34 0" right="12 0" />
+    <neighbor left="35 0" right="12 0" />
+    <neighbor left="35 0" right="13 0" />
+    <neighbor left="36 0" right="28 0" />
+    <neighbor left="36 0" right="58 0" />
+    <neighbor left="36 0" right="10 0" />
+    <neighbor left="37 0" right="3 0" />
+    <neighbor left="37 0" right="2 0" />
+    <neighbor left="37 0" right="4 0" />
+    <neighbor left="38 0" right="56 0" />
+    <neighbor left="38 0" right="31 0" />
+    <neighbor left="38 0" right="69 0" />
+    <neighbor left="38 0" right="59 0" />
+    <neighbor left="39 0" right="40 0" />
+    <neighbor left="39 0" right="41 0" />
+    <neighbor left="40 0" right="41 0" />
+    <neighbor left="40 0" right="53 0" />
+    <neighbor left="41 0" right="42 0" />
+    <neighbor left="41 0" right="41 0" />
+    <neighbor left="41 0" right="51 0" />
+    <neighbor left="41 0" right="9 0" />
+    <neighbor left="41 0" right="53 0" />
+    <neighbor left="41 0" right="63 0" />
+    <neighbor left="41 0" right="54 0" />
+    <neighbor left="41 0" right="43 0" />
+    <neighbor left="41 0" right="70 0" />
+    <neighbor left="41 0" right="74 0" />
+    <neighbor left="41 0" right="78 0" />
+    <neighbor left="41 0" right="17 0" />
+    <neighbor left="41 0" right="127 0" />
+    <neighbor left="41 0" right="77 0" />
+    <neighbor left="41 0" right="120 0" />
+    <neighbor left="41 0" right="134 0" />
+    <neighbor left="41 0" right="139 0" />
+    <neighbor left="42 0" right="9 0" />
+    <neighbor left="42 0" right="43 0" />
+    <neighbor left="42 0" right="77 0" />
+    <neighbor left="42 0" right="11 0" />
+    <neighbor left="42 0" right="17 0" />
+    <neighbor left="42 0" right="132 0" />
+    <neighbor left="43 0" right="9 0" />
+    <neighbor left="43 0" right="39 0" />
+    <neighbor left="44 0" right="46 0" />
+    <neighbor left="44 0" right="12 0" />
+    <neighbor left="44 0" right="55 0" />
+    <neighbor left="45 0" right="10 0" />
+    <neighbor left="46 0" right="12 0" />
+    <neighbor left="46 0" right="27 0" />
+    <neighbor left="46 0" right="46 0" />
+    <neighbor left="47 0" right="25 0" />
+    <neighbor left="47 0" right="26 0" />
+    <neighbor left="47 0" right="73 0" />
+    <neighbor left="49 0" right="11 0" />
+    <neighbor left="49 0" right="68 0" />
+    <neighbor left="49 0" right="79 0" />
+    <neighbor left="50 0" right="41 0" />
+    <neighbor left="50 0" right="53 0" />
+    <neighbor left="50 0" right="63 0" />
+    <neighbor left="50 0" right="42 0" />
+    <neighbor left="52 0" right="50 0" />
+    <neighbor left="52 0" right="41 0" />
+    <neighbor left="53 0" right="54 0" />
+    <neighbor left="53 0" right="120 0" />
+    <neighbor left="53 0" right="9 0" />
+    <neighbor left="53 0" right="17 0" />
+    <neighbor left="53 0" right="137 0" />
+    <neighbor left="53 0" right="12 0" />
+    <neighbor left="54 0" right="52 0" />
+    <neighbor left="54 0" right="9 0" />
+    <neighbor left="55 0" right="12 0" />
+    <neighbor left="55 0" right="27 0" />
+    <neighbor left="55 0" right="150 0" />
+    <neighbor left="56 0" right="61 0" />
+    <neighbor left="56 0" right="56 0" />
+    <neighbor left="56 0" right="69 0" />
+    <neighbor left="56 0" right="59 0" />
+    <neighbor left="56 0" right="37 0" />
+    <neighbor left="56 0" right="31 0" />
+    <neighbor left="57 0" right="9 0" />
+    <neighbor left="58 0" right="59 0" />
+    <neighbor left="58 0" right="56 0" />
+    <neighbor left="58 0" right="31 0" />
+    <neighbor left="58 0" right="69 0" />
+    <neighbor left="59 0" right="24 0" />
+    <neighbor left="59 0" right="9 0" />
+    <neighbor left="60 0" right="4 0" />
+    <neighbor left="60 0" right="38 0" />
+    <neighbor left="60 0" right="2 0" />
+    <neighbor left="61 0" right="17 0" />
+    <neighbor left="61 0" right="5 0" />
+    <neighbor left="61 0" right="78 0" />
+    <neighbor left="61 0" right="11 0" />
+    <neighbor left="62 0" right="9 0" />
+    <neighbor left="62 0" right="5 0" />
+    <neighbor left="62 0" right="80 0" />
+    <neighbor left="62 0" right="78 0" />
+    <neighbor left="62 0" right="11 0" />
+    <neighbor left="62 0" right="32 0" />
+    <neighbor left="63 0" right="8 0" />
+    <neighbor left="63 0" right="10 0" />
+    <neighbor left="63 0" right="22 0" />
+    <neighbor left="63 0" right="28 0" />
+    <neighbor left="65 0" right="49 0" />
+    <neighbor left="65 0" right="9 0" />
+    <neighbor left="66 0" right="9 0" />
+    <neighbor left="67 0" right="74 0" />
+    <neighbor left="67 0" right="40 0" />
+    <neighbor left="67 0" right="41 0" />
+    <neighbor left="68 0" right="68 0" />
+    <neighbor left="68 0" right="11 0" />
+    <neighbor left="68 0" right="16 0" />
+    <neighbor left="68 0" right="9 0" />
+    <neighbor left="68 0" right="17 0" />
+    <neighbor left="69 0" right="26 0" />
+    <neighbor left="69 0" right="23 0" />
+    <neighbor left="69 0" right="25 0" />
+    <neighbor left="70 0" right="22 0" />
+    <neighbor left="70 0" right="62 0" />
+    <neighbor left="70 0" right="10 0" />
+    <neighbor left="71 0" right="50 0" />
+    <neighbor left="72 0" right="26 0" />
+    <neighbor left="72 0" right="25 0" />
+    <neighbor left="73 0" right="61 0" />
+    <neighbor left="73 0" right="31 0" />
+    <neighbor left="73 0" right="56 0" />
+    <neighbor left="74 0" right="74 0" />
+    <neighbor left="74 0" right="41 0" />
+    <neighbor left="74 0" right="63 0" />
+    <neighbor left="74 0" right="9 0" />
+    <neighbor left="74 0" right="136 0" />
+    <neighbor left="74 0" right="70 0" />
+    <neighbor left="75 0" right="61 0" />
+    <neighbor left="77 0" right="17 0" />
+    <neighbor left="78 0" right="9 0" />
+    <neighbor left="78 0" right="78 0" />
+    <neighbor left="78 0" right="82 0" />
+    <neighbor left="78 0" right="88 0" />
+    <neighbor left="78 0" right="17 0" />
+    <neighbor left="78 0" right="101 0" />
+    <neighbor left="78 0" right="97 0" />
+    <neighbor left="78 0" right="105 0" />
+    <neighbor left="78 0" right="10 0" />
+    <neighbor left="78 0" right="8 0" />
+    <neighbor left="78 0" right="128 0" />
+    <neighbor left="78 0" right="22 0" />
+    <neighbor left="79 0" right="16 0" />
+    <neighbor left="79 0" right="79 0" />
+    <neighbor left="80 0" right="74 0" />
+    <neighbor left="80 0" right="41 0" />
+    <neighbor left="81 0" right="95 0" />
+    <neighbor left="81 0" right="78 0" />
+    <neighbor left="82 0" right="17 0" />
+    <neighbor left="82 0" right="97 0" />
+    <neighbor left="82 0" right="9 0" />
+    <neighbor left="82 0" right="12 0" />
+    <neighbor left="88 0" right="78 0" />
+    <neighbor left="97 0" right="103 0" />
+    <neighbor left="98 0" right="2 0" />
+    <neighbor left="99 0" right="17 0" />
+    <neighbor left="100 0" right="104 0" />
+    <neighbor left="100 0" right="17 0" />
+    <neighbor left="100 0" right="11 0" />
+    <neighbor left="100 0" right="110 0" />
+    <neighbor left="100 0" right="106 0" />
+    <neighbor left="103 0" right="103 0" />
+    <neighbor left="103 0" right="107 0" />
+    <neighbor left="104 0" right="78 0" />
+    <neighbor left="104 0" right="82 0" />
+    <neighbor left="104 0" right="105 0" />
+    <neighbor left="105 0" right="9 0" />
+    <neighbor left="105 0" right="17 0" />
+    <neighbor left="105 0" right="11 0" />
+    <neighbor left="106 0" right="103 0" />
+    <neighbor left="106 0" right="114 0" />
+    <neighbor left="106 0" right="107 0" />
+    <neighbor left="107 0" right="17 0" />
+    <neighbor left="107 0" right="67 0" />
+    <neighbor left="107 0" right="119 0" />
+    <neighbor left="107 0" right="121 0" />
+    <neighbor left="108 0" right="4 0" />
+    <neighbor left="109 0" right="41 0" />
+    <neighbor left="110 0" right="112 0" />
+    <neighbor left="110 0" right="100 0" />
+    <neighbor left="110 0" right="113 0" />
+    <neighbor left="111 0" right="117 0" />
+    <neighbor left="111 0" right="112 0" />
+    <neighbor left="112 0" right="113 0" />
+    <neighbor left="112 0" right="112 0" />
+    <neighbor left="113 0" right="118 0" />
+    <neighbor left="113 0" right="122 0" />
+    <neighbor left="113 0" right="107 0" />
+    <neighbor left="114 0" right="111 0" />
+    <neighbor left="114 0" right="107 0" />
+    <neighbor left="116 0" right="26 0" />
+    <neighbor left="119 0" right="41 0" />
+    <neighbor left="120 0" right="17 0" />
+    <neighbor left="121 0" right="50 0" />
+    <neighbor left="121 0" right="123 0" />
+    <neighbor left="121 0" right="41 0" />
+    <neighbor left="121 0" right="63 0" />
+    <neighbor left="122 0" right="41 0" />
+    <neighbor left="125 0" right="78 0" />
+    <neighbor left="126 0" right="9 0" />
+    <neighbor left="127 0" right="17 0" />
+    <neighbor left="128 0" right="17 0" />
+    <neighbor left="129 0" right="2 0" />
+    <neighbor left="129 0" right="4 0" />
+    <neighbor left="133 0" right="41 0" />
+    <neighbor left="148 0" right="149 0" />
+    <neighbor left="150 0" right="10 0" />
+  </neighbors>
+</set>

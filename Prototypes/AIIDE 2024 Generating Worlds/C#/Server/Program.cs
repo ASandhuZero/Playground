@@ -29,7 +29,8 @@ static class Program
         //TODO: at some point finish this code so that way you can choose which model you want to run from the commandline... but I didn't realize how much of an under taking it actually was going to be.
 
         MyTcpListener server = new MyTcpListener();
-        server.Test(model_type);
+        // server.Test(model_type);
+        BitmapHelper.DragonQuestTest(model_type);
         // server.Start();
     }
 }

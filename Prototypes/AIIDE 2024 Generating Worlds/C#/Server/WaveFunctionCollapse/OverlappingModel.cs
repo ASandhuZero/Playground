@@ -251,7 +251,7 @@ class OverlappingModel : Model
         BitmapHelper.SaveBitmap(bitmap, MX, MY, filename);
     }
 
-    public void SaveWithTiles(string filename, List<Tile> tiles)
+    public void SaveImageAndRules(string filename, List<Tile> tiles)
     {
         var boole = observed[0] >= 0;
         foreach (var item in observed)

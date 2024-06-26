@@ -66,9 +66,11 @@ class MyTcpListener
     // This function should only generate one tile map... 
     // then we should have some for loop that is calling the generatetilemap code, inputting the names of the tilemap to generate, or they are generated through the model
     // TODO: Remember to add back in the code below.
-    GenerateTilemap(testsheet, model_type);
+    // GenerateTilemap(testsheet, model_type);
+    // Sooo... this code needs to be refactored, because what if we have a tilemap that 
+    // we want to generate the tileset from? we should do that first and then generate the rules for it and then generate the 
 
-    var converted_tiles = TileConvertor.GenerateBitmapFromTilemap(48);
+    // var converted_tiles = TileConvertor.GenerateBitmapFromTilemap(48);
     // I think this needs to be rewritten.
     // as in that we shoudl firs
     Console.WriteLine("Test has finished");

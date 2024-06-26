@@ -24,10 +24,10 @@ We should acknowledge about using this is that we are creating a total system th
 
 # Abstract
 
-This work focuses on transfer learning through WaveFunctionCollapse.
-The transfer learning occurs a differently that the already well-established field due to our approach using generated rulesets to work to enable the transfer learning.
-We do this by using the already existing properties of WaveFunctionCollapse such as its learning algorithm, which we will describe in this paper, and through that learning process, we generate a ruleset for the other variant of WaveFunctionCollapse--the simpletiled model.
-The simpletiled model is a non-learning variant of WaveFunctionCollapse that requires a ruleset that encapsulates the associations rather than learn them from a supplied tilemap. 
+Big thing is I am looking at a tilemap and employing the pixel learning that model synthesis has and is implemented in WFC. My contribution isn't the algorithm itself in somuch that is the exploration of the algorithm and then in its application to tilemap and tilemap constraint learning.
+
+
+WaveFunctionCollapse, a Procedural Content Generation (PCG) technique that learns pixel associations from the given input to generate similar classes of output. Users, thus, bypass the tedious step of decomposing their domain knowledge of a design area into a form that a PCG system can use, but often the designer loses fine control over the generative space that rules give them–thus possibly leading to frustrations with the generative process or artifact. This paper explores automatic rule generation through WFC by exposing the pattern-based learning used by WFC to generate rules automatically. By generating rules, we hope this approach would ease the hard authorial task of crafting a bespoke rule set for WFC and address the authorial burden problem. To better understand the internal association generation, we will explore the algorithm within this paper, focusing mostly on the locality pattern reconciliation aspect of WFC, while also better understanding the inferred rules aspect of a rules-based version of WFC (that comes together with the learning variant). Focusing on these two aspects of the algorithm enables us to understand how to generate rules automatically and also test their validity. Finally, we supply a preliminary set of evaluation techniques to ensure that the generated rules capture the patterns within the input image, and can generate images through the rules that are similar to the original input image. By automatically generating these rules, we hope to better understand the first steps towards creating a mixed initiative level tool centered on WFC that both allows users to give a series of training images, but also allow for the flexibility of adding, removing, and editing the generated rules for more user control of the generative process.
 
 # Introduction
 
@@ -174,7 +174,18 @@ So the take away for this paper is that we are attempting to see how much transf
 
 # Interesting ideas
 
-make sure to compare the output against some large language model, such as Gemini or chatgpt, to show that your rulesets contain more information from the original. I think this is going to be needed so that way I can go ahead and get that out of the bat. You can use the Max Kerminski work to show that you prompted it well enough.
+The rules are written in a left right pattern, but because of the rotations, there most likely a new implicit left right pattern being generated, so green 0 and water 1 will also generate a water 1 and a green 0
+
+Tiles are sparsely represented and give a high level explanation why the output ruleset
+When the patterns are being generated through the overlapping, check to see if the pattern generated is also within the original ruleset. If it is not then you can show a new rule origin point and the context that generated it.
+
+Look at the model synthesis work and see what it has to say about this.
+
+There is an issue that should be obvious, which is tha the simple tiled model will take the rules that exist and create an up and down relationship betweeen these rules and then use those as well. So really, the patterns that we should be keeping track are just the left and right associations... But then the issue comes when the patterns are made, they look at the output and there most likely is a case that they are getting the up and down rules as well. 
+So I guess we are also mining those as well and should explain how that stays within the artifact and we are learning the implicit left and right rules as well.
+
+
+make sure to compare the output against some large language model, such as Gemini or chatgpt, to show that your rulesets contain more information from the original. I think this is going to be needed so that way I can go ahead and get that out of the bat. You can use the Max Kerminski work to show that you prompted it well enough. But Gemini already failed, so we can just get that test out of the way.
 
 this paper seems most likely that it will be of use. https://repository.falmouth.ac.uk/2945/1/bare_conf.pdf
 

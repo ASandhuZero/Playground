@@ -157,12 +157,16 @@ static class BitmapHelper
         return true;
     }
 
+
+    // so we have these images, and we want to create a tileset with them and the best
+    // way that we can do that as each tile appears, we can compare that tile to a value 
     private static List<Image<Bgra32>> ExtractTiles(Image<Bgra32> sourceImage, int tilesize)
     {
         int _xTileAmount = sourceImage.Width/tilesize;
         int _yTileAmount = sourceImage.Height/tilesize;
 
         List<Image<Bgra32>> tiles = new List<Image<Bgra32>>();
+        List<Image<Bgra32>> unique_tile = new List<Image<Bgra32>>();
         Image<Bgra32> tile = new(sourceImage.Width, sourceImage.Height);
 
         for (int y = 0; y < _yTileAmount; y++)
@@ -172,7 +176,6 @@ static class BitmapHelper
                 Rectangle sourceArea = new Rectangle(new Point(x*tilesize,y*tilesize), new Size(tilesize));
 
                 tile = Extract(sourceImage, sourceArea);
-
                 tiles.Add(tile);
             }
         }
@@ -206,7 +209,7 @@ static class BitmapHelper
             var image = tile_images[i];
             var tile = new Tile();
             tile.tile_image = image;
-            tile.name = $"tile_image {i}";
+            tile.name = $"{i}";
 
             tiles.Add(tile);
         }
@@ -214,7 +217,7 @@ static class BitmapHelper
         return tiles;
     }
 
-    private static Image<Bgra32> GeneratePixelBitmap(Image<Bgra32> image, int tilesize, List<Tile> tiles)
+    private static Image<Bgra32> DownscaleImageToBitmap(Image<Bgra32> image, int tilesize, List<Tile> tiles)
     {
         int _xTileAmount = image.Width/tilesize;
         int _yTileAmount = image.Height/tilesize;
@@ -231,25 +234,25 @@ static class BitmapHelper
 
                 tile_image = Extract(image, sourceArea);
 
-                Tile selected_tile = tiles[0];
+                Tile tile_match = tiles[0];
                 foreach(var tile in tiles)
                 {
                     if (ComparePixels(tile.tile_image, tile_image))
                     {
-                        selected_tile = tile;
+                        tile_match = tile;
                         break;
                     }
 
                 }
 
-                pixelBitmap[x,y] = selected_tile.pixel_representation; 
+                pixelBitmap[x,y] = tile_match.pixel_representation; 
 
             }
         }
         return pixelBitmap;
     }
 
-    private static Image<Bgra32> UpscaleBitmapToTilemap(Image<Bgra32> bitmap, int tilesize, List<Tile> tiles)
+    private static Image<Bgra32> UpscaleBitmapToImage(Image<Bgra32> bitmap, int tilesize, List<Tile> tiles)
     {
         int _xTileAmount = bitmap.Width * tilesize;
         int _yTileAmount = bitmap.Height * tilesize;
@@ -297,7 +300,7 @@ static class BitmapHelper
         if (success)
         {
             Console.WriteLine("DONE");
-            model.SaveWithTiles($"output/{name}.png", tiles);
+            model.SaveImageAndRules($"output/{name}.png", tiles);
             return true;
         }
         Console.WriteLine("CONTRADICTION");
@@ -350,7 +353,7 @@ static class BitmapHelper
                 }
             }
 
-            Image<Bgra32> bitmap = GeneratePixelBitmap(image, tilesize, tiles);
+            Image<Bgra32> bitmap = DownscaleImageToBitmap(image, tilesize, tiles);
             bitmap.SaveAsPng($"samples/{bitmap_name}.png");
 
             // Use WFC to generate new bitmap
@@ -370,7 +373,7 @@ static class BitmapHelper
 
             using var bitmapFromModel = Image.Load<Bgra32>($"output/bitmap_{name}.png");
 
-            Image<Bgra32> upscaled_image = UpscaleBitmapToTilemap(bitmapFromModel, tilesize, tiles);
+            Image<Bgra32> upscaled_image = UpscaleBitmapToImage(bitmapFromModel, tilesize, tiles);
             upscaled_image.SaveAsPng($"generated/upscaled_{name}.png");
             Console.WriteLine($"{width/tilesize}, {height/tilesize}");
 
@@ -399,16 +402,104 @@ static class BitmapHelper
             }
         }
 
+        // comparing rulesets
         var generated_rule_count =generated_rules.Descendants("neighbors").Descendants("neighbor").Count(); 
-        var similiarity = (float)matching/(float)generated_rule_count;
+        var crafted_rule_count =crafted_rules.Descendants("neighbors").Descendants("neighbor").Count(); 
+        // var similiarity = (float)matching/(float)generated_rule_count;
+        var similiarity = (float)matching/(float)crafted_rule_count;
         Console.WriteLine($"similiarity: {similiarity}");
+        Console.WriteLine((float)matching/(float)generated_rule_count);
+        // Create a monolithic ruleset... Keep generating for like 100 images, then learn the rules and add them into the same ruleset.
         // Figure out other evaluations and why the similiarity is so low.
         // I think that the similiarity is low because of the pattern thing... let's see how the patterns change if we change the patterns withing WEFC
 
+        // so we need to create a generated ruleset folder, then we need to add in all the rulesets into that folder. As we do that, we need to make sure to add in the seed so that we are different from each other. 
+        // Then after doing that, we iterate through the entire folder, adding all the rules to a single xml file and then outputting that.
+        // So the similiarity is probably low because you are also learning the top and down patterns as well that the simpletiledmodel implicitly includes as well... We might want to try and generate those so we can compare the overall rule similiarity
+        // I think that we can do the simple gemini example evaluation right now so we can see the outputs.
+        //
+        //Be solid on what implicit means and have a concrete definition within the paper.
+        //Axomatic rules because they are implications/implied/inferred
+        //the big step that i need to do is to use this with a non-trival learning set and then see if we can generate similar output to the original non-trival learning set.
+        //Genreate out the tileset as well, you have done this before, make sure you name then something intelligent but you don't need the original tileset.
+    }
+    // Welcome to the thunderdome, we are going to put the dragonquest tilemap code here because it makes the most sense to me, I think.
+    public static void DragonQuestTest(int model_type)
+    {
+        var name = "alefgard";
+        var DG_overworld = Image.Load<Bgra32>($"{name}.gif");
+
+        int height = DG_overworld.Height;
+        int width = DG_overworld.Width;
+        var tilesize = 16;
+
+        Console.WriteLine("Extracting tiles");
+        var tile_images = ExtractTiles(DG_overworld, tilesize);
+
+        Console.WriteLine("Getting unique tiles");
+        List<Image<Bgra32>> unique_tiles = GetUniqueTiles(tile_images, tilesize);
+
+        Console.WriteLine("Saving tiles");
+        int count = 0;
+        foreach (var item in unique_tiles)
+        {
+            item.SaveAsPng($"tiles/dragonquest/{count}.png");
+            count++;
+        }
+        Console.WriteLine("Tiles have been saved!");
+        
+        Console.WriteLine("Creating tiles in list format for later computation.");
+        List<Tile> tiles = ConvertToTiles(unique_tiles);
+
+
+        Console.WriteLine("Mapping tile to pixels.");
+        tiles = MapTilesToPixels(tiles);
+
+        Console.WriteLine("Downscaling image to bitmap");
+
+        Image<Bgra32> bitmap = DownscaleImageToBitmap(DG_overworld, tilesize, tiles);
+        Console.WriteLine("Saving bitmap");
+        var bitmap_name = $"bitmap_{name}";
+        bitmap.SaveAsPng($"samples/{bitmap_name}.png");
+
+
+        Random random = new();
+        int seed = random.Next();
+
+        // Console.WriteLine("Generating rules from overworld image");
+        // bool is_map_generated = false;
+        // while (!is_map_generated)
+        // {
+        //     is_map_generated = GenerateTilemapFromBitmap(bitmap_name, width/tilesize, height/tilesize, seed, tiles);
+        //     // NOTE: Please refactor this.
+        //     if(!is_map_generated)
+        //     {
+        //         seed = random.Next();
+        //     }
+        //
+        // }
+        //
+        // using var bitmapFromModel = Image.Load<Bgra32>($"output/bitmap_{name}.png");
+        //
+        // Image<Bgra32> upscaled_image = UpscaleBitmapToImage(bitmapFromModel, tilesize, tiles);
+        // upscaled_image.SaveAsPng($"generated/upscaled_{name}.png");
+        // Console.WriteLine($"{width/tilesize}, {height/tilesize}");
+
+
+        // now generate with the simple tile map
+        Console.WriteLine("Now generating output with the tileset.");
+        XElement xelem = XElement.Load("alefgard_neighbors.xml");
+        string subset = xelem.Get<string>("subset");
+        bool blackBackground = xelem.Get("blackBackground", false);
+        bool periodic = false;
+        var heuristic = Model.Heuristic.Entropy;
+
+        var model = new SimpleTiledModel(name, subset, 100, 100, periodic, blackBackground, heuristic);
+
+        model.Run(seed, -1);
+        // for some reason there isn't any output when it comes the simpletiledmodel
+        // so figure that out and then start doing some paper writing.
+        model.Save($"output/{name}.png");
 
     }
 }
-
-
-
-
