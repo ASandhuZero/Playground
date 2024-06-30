@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<tiles>
+  <tile name="corridor" weight="1" />
+  <tile name="t" weight="1" />
+  <tile name="bend" weight="1" />
+  <tile name="turn" weight="1" />
+  <tile name="door" weight="1" />
+  <tile name="side" weight="1" />
+  <tile name="corner" weight="1" />
+  <tile name="empty" weight="1" />
+  <tile name="wall" weight="1" />
+</tiles>

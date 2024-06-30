@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<set>
+  <tiles>
+    <tile name="b_half" symmetry="T" />
+    <tile name="b_i" symmetry="I" />
+    <tile name="b_quarter" symmetry="L" />
+    <tile name="w_half" symmetry="T" />
+    <tile name="w_i" symmetry="I" />
+    <tile name="w_quarter" symmetry="L" />
+    <tile name="b" symmetry="X" />
+    <tile name="w" symmetry="X" />
+  </tiles>
+  <neighbors>
+    <neighbor left="b_half" right="b_half" />
+    <neighbor left="b_half" right="b_quarter" />
+    <neighbor left="b_half" right="w_quarter" />
+    <neighbor left="b_quarter" right="w_quarter" />
+    <neighbor left="b_quarter" right="b_half" />
+    <neighbor left="w_quarter" right="b_half" />
+    <neighbor left="w_quarter" right="b_quarter" />
+    <neighbor left="b_half" right="b_half" />
+    <neighbor left="b_half" right="b_quarter" />
+    <neighbor left="b_half" right="w_quarter" />
+    <neighbor left="b_quarter" right="w_quarter" />
+    <neighbor left="b_quarter" right="b_half" />
+    <neighbor left="w_quarter" right="b_half" />
+    <neighbor left="w_quarter" right="b_quarter" />
+  </neighbors>
+</set>

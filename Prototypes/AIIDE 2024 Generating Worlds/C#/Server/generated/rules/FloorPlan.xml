@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<set unique="true">
+  <tiles>
+    <tile name="empty" symmetry="X" weight="0.1" />
+    <tile name="out" symmetry="L" />
+    <tile name="wall" symmetry="T" />
+    <tile name="in" symmetry="L" />
+    <tile name="floor" symmetry="X" />
+    <tile name="halfglass" symmetry="F" />
+    <tile name="glass" symmetry="T" />
+    <tile name="walldiv" symmetry="T" />
+    <tile name="divturn" symmetry="L" />
+    <tile name="div" symmetry="I" />
+    <tile name="divt" symmetry="T" />
+    <tile name="stairs" symmetry="T" />
+    <tile name="w" symmetry="T" />
+    <tile name="window" symmetry="T" />
+    <tile name="door" symmetry="I" weight="0.5" />
+    <tile name="vent" symmetry="X" weight="0.5" />
+    <tile name="table" symmetry="X" weight="0.8" />
+  </tiles>
+  <neighbors>
+    <neighbor left="empty" right="divt" />
+    <neighbor left="empty" right="out" />
+    <neighbor left="empty" right="empty" />
+    <neighbor left="divt" right="divt" />
+    <neighbor left="divt" right="floor" />
+    <neighbor left="divt" right="vent" />
+    <neighbor left="divt" right="table" />
+    <neighbor left="divt" right="div" />
+    <neighbor left="divt" right="divturn" />
+    <neighbor left="divt" right="empty" />
+    <neighbor left="divt" right="walldiv" />
+    <neighbor left="divt" right="stairs" />
+    <neighbor left="divt" right="wall" />
+    <neighbor left="divt" right="window" />
+    <neighbor left="divt" right="w" />
+    <neighbor left="divt" right="door" />
+    <neighbor left="divt" right="in" />
+    <neighbor left="floor" right="divt" />
+    <neighbor left="floor" right="floor" />
+    <neighbor left="floor" right="divturn" />
+    <neighbor left="vent" right="divt" />
+    <neighbor left="vent" right="divturn" />
+    <neighbor left="vent" right="vent" />
+    <neighbor left="table" right="table" />
+    <neighbor left="table" right="divt" />
+    <neighbor left="table" right="divturn" />
+    <neighbor left="div" right="divt" />
+    <neighbor left="div" right="div" />
+    <neighbor left="div" right="stairs" />
+    <neighbor left="div" right="door" />
+    <neighbor left="door" right="divt" />
+    <neighbor left="door" right="div" />
+    <neighbor left="door" right="stairs" />
+    <neighbor left="door" right="door" />
+    <neighbor left="divturn" right="div" />
+    <neighbor left="divturn" right="stairs" />
+    <neighbor left="divturn" right="divt" />
+    <neighbor left="divturn" right="door" />
+    <neighbor left="stairs" right="divt" />
+    <neighbor left="stairs" right="div" />
+    <neighbor left="stairs" right="door" />
+    <neighbor left="walldiv" right="in" />
+    <neighbor left="walldiv" right="divt" />
+    <neighbor left="walldiv" right="window" />
+    <neighbor left="walldiv" right="w" />
+    <neighbor left="walldiv" right="wall" />
+    <neighbor left="walldiv" right="halfglass" />
+    <neighbor left="in" right="divt" />
+    <neighbor left="in" right="table" />
+    <neighbor left="in" right="divturn" />
+    <neighbor left="in" right="vent" />
+    <neighbor left="in" right="floor" />
+    <neighbor left="out" right="wall" />
+    <neighbor left="out" right="w" />
+    <neighbor left="out" right="walldiv" />
+    <neighbor left="out" right="window" />
+    <neighbor left="out" right="halfglass" />
+    <neighbor left="w" right="walldiv" />
+    <neighbor left="w" right="w" />
+    <neighbor left="w" right="in" />
+    <neighbor left="w" right="divt" />
+    <neighbor left="wall" right="in" />
+    <neighbor left="wall" right="wall" />
+    <neighbor left="wall" right="walldiv" />
+    <neighbor left="wall" right="divt" />
+    <neighbor left="window" right="divt" />
+    <neighbor left="window" right="in" />
+    <neighbor left="window" right="window" />
+    <neighbor left="window" right="walldiv" />
+    <neighbor left="halfglass" right="glass" />
+    <neighbor left="glass" right="divt" />
+    <neighbor left="glass" right="glass" />
+  </neighbors>
+</set>

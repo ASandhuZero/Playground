@@ -19,10 +19,10 @@ class SimpleTiledModel : Model
     int tilesize;
     bool blackBackground;
 
-    public SimpleTiledModel(string name, string subsetName, int width, int height, bool periodic, bool blackBackground, Heuristic heuristic) : base(width, height, 1, periodic, heuristic)
+    public SimpleTiledModel(string filepath, string name, string subsetName, int width, int height, bool periodic, bool blackBackground, Heuristic heuristic) : base(width, height, 1, periodic, heuristic)
     {
         this.blackBackground = blackBackground;
-        XElement xroot = XDocument.Load($"tilesets/{name}.xml").Root;
+        XElement xroot = XDocument.Load($"{filepath}/{name}.xml").Root;
         bool unique = xroot.Get("unique", false);
 
         List<string> subset = null;
@@ -226,7 +226,10 @@ class SimpleTiledModel : Model
             int ST = sp.Count;
             if (ST == 0) Console.WriteLine($"ERROR: tile {tilenames[t1]} has no neighbors in direction {d}");
             propagator[d][t1] = new int[ST];
-            for (int st = 0; st < ST; st++) propagator[d][t1][st] = sp[st];
+            for (int st = 0; st < ST; st++) 
+            {
+                propagator[d][t1][st] = sp[st];
+            }
         }
     }
 
@@ -270,7 +273,6 @@ class SimpleTiledModel : Model
                 }
             }
         }
-
         BitmapHelper.SaveBitmap(bitmapData, MX * tilesize, MY * tilesize, filename);
     }
 

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<set unique="true">
+  <tiles>
+    <tile name="bridge" symmetry="I" weight="1.0" />
+    <tile name="component" symmetry="X" weight="20.0" />
+    <tile name="connection" symmetry="T" weight="10.0" />
+    <tile name="corner" symmetry="L" weight="10.0" />
+    <tile name="substrate" symmetry="X" weight="2.0" />
+    <tile name="t" symmetry="T" weight="0.1" />
+    <tile name="track" symmetry="I" weight="2.0" />
+    <tile name="transition" symmetry="T" weight="0.4" />
+    <tile name="turn" symmetry="L" weight="1.0" />
+    <tile name="viad" symmetry="I" weight="0.1" />
+    <tile name="vias" symmetry="T" weight="0.3" />
+    <tile name="wire" symmetry="I" weight="0.5" />
+    <tile name="skew" symmetry="L" weight="2.0" />
+    <tile name="dskew" symmetry="\" weight="2.0" />
+  </tiles>
+  <neighbors>
+    <neighbor left="track" right="transition" />
+    <neighbor left="transition" right="skew" />
+    <neighbor left="transition" right="substrate" />
+    <neighbor left="transition" right="transition" />
+    <neighbor left="transition" right="connection" />
+    <neighbor left="transition" right="component" />
+    <neighbor left="transition" right="dskew" />
+    <neighbor left="skew" right="transition" />
+    <neighbor left="substrate" right="track" />
+    <neighbor left="connection" right="corner" />
+    <neighbor left="connection" right="connection" />
+    <neighbor left="corner" right="substrate" />
+    <neighbor left="component" right="transition" />
+    <neighbor left="component" right="component" />
+    <neighbor left="dskew" right="transition" />
+  </neighbors>
+</set>

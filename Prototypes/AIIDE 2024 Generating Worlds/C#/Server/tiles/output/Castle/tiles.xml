@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<tiles>
+  <tile name="bridge" weight="1" />
+  <tile name="road" weight="1" />
+  <tile name="river" weight="1" />
+  <tile name="t" weight="1" />
+  <tile name="tower" weight="1" />
+  <tile name="riverturn" weight="1" />
+  <tile name="wallriver" weight="1" />
+  <tile name="roadturn" weight="1" />
+  <tile name="wallroad" weight="1" />
+  <tile name="ground" weight="1" />
+  <tile name="wall" weight="1" />
+</tiles>

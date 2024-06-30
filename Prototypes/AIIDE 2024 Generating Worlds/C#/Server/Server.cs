@@ -26,56 +26,9 @@ public class TileArray
   public String? tiles { get; set; }
 } 
 
-public class TileConvertor
-{
-
-  public static int GenerateBitmapFromTilemap(int tilesize)
-  {
-    // TODO: the code below needs some heavy refactoring, but we will do that after the paper gets submitted.
-    for(int i = 10; i <= 40; i=i+10)
-    {
-      var name = $"Summer {i}x{i}";
-      Console.WriteLine($"< {name}");
-
-      //WARNING: this is hardcoded and could cause some issues later on
-      var (tilemap, SX, SY) = BitmapHelper.LoadBitmap($"output/{name}.png");
-      var MX = SX;
-      var MY = SY;
-      // Continue. I don't know what is going on but something is happening
-      // now that I am trying to use this nonsense solution... I think that I need to 
-      BitmapHelper.CompressAndDepcompressTilemap(name, tilemap, MX, MY, tilesize, $"output/Tiles.png");
-    }
-
-    // Now we need
-
-    return 1;
-  }
-}
-
 
 class MyTcpListener
 {
-  public void Test(int model_type)
-  {
-    
-    Specsheet testsheet = new Specsheet();
-    testsheet.width = 10;
-    testsheet.height = 10;
-    testsheet.spec = "test";
-    // okay so test needs to change and the way to change it is like this:
-    // This function should only generate one tile map... 
-    // then we should have some for loop that is calling the generatetilemap code, inputting the names of the tilemap to generate, or they are generated through the model
-    // TODO: Remember to add back in the code below.
-    // GenerateTilemap(testsheet, model_type);
-    // Sooo... this code needs to be refactored, because what if we have a tilemap that 
-    // we want to generate the tileset from? we should do that first and then generate the rules for it and then generate the 
-
-    // var converted_tiles = TileConvertor.GenerateBitmapFromTilemap(48);
-    // I think this needs to be rewritten.
-    // as in that we shoudl firs
-    Console.WriteLine("Test has finished");
-    BitmapHelper.GetRuleSimiliarity();
-  } 
 
   public void Start()
   {
@@ -159,10 +112,10 @@ class MyTcpListener
 
   // TODO: Change method so data from specsheet can pass in through server 
   // function callback.
-  static TileArray GenerateTilemap(Specsheet data, int model_type)
+  public TileArray GenerateTilemap(Specsheet data, int model_type)
   {
-    Console.WriteLine(model_type);
     // TODO: There's got to be a better name for this I think.
+    Console.WriteLine(model_type);
     TileArray tarray = new TileArray();
     Stopwatch sw = Stopwatch.StartNew();
     var folder = System.IO.Directory.CreateDirectory("output");
@@ -178,7 +131,8 @@ class MyTcpListener
       Console.WriteLine($"< {name}");
 
       bool isOverlapping = xelem.Name == "overlapping";
-      int size = xelem.Get("tilesize", isOverlapping ? 48 : 24);
+      // int size = xelem.Get("tilesize", isOverlapping ? 48 : 24);
+      int size = xelem.Get("size", isOverlapping ? 48 : 24);
       int width = xelem.Get("width", data.width != 0 ? data.width : size);
       int height = xelem.Get("height", data.height != 0 ? data.height : size);
       bool periodic = xelem.Get("periodic", false);
@@ -192,14 +146,15 @@ class MyTcpListener
         int symmetry = xelem.Get("symmetry", 8);
         bool ground = xelem.Get("ground", false);
 
-        model = new OverlappingModel(name, N, width, height, periodicInput, periodic, symmetry, ground, heuristic);
+        model = new OverlappingModel("samples", name, N, width, height, periodicInput, periodic, symmetry, ground, heuristic);
       }
       else
       {
         string subset = xelem.Get<string>("subset");
         bool blackBackground = xelem.Get("blackBackground", false);
 
-        model = new SimpleTiledModel(name, subset, width, height, periodic, blackBackground, heuristic);
+        string filepath = "tilesets";
+        model = new SimpleTiledModel(filepath, name, subset, width, height, periodic, blackBackground, heuristic);
       }
 
       for (int i = 0; i < xelem.Get("screenshots", 2); i++)
@@ -212,7 +167,8 @@ class MyTcpListener
           if (success)
           {
             Console.WriteLine("DONE");
-            model.Save($"output/{name} {width}x{height}.png");
+            // model.Save($"output/{name} {width}x{height}.png");
+            model.Save($"output/{name} {seed}.png");
             if (model is SimpleTiledModel stmodel && xelem.Get("textOutput", false))
             {
               System.IO.File.WriteAllText($"output/{name} {seed}.txt", stmodel.TextOutput());

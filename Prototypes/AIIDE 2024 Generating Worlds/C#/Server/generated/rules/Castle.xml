@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<set unique="true">
+  <tiles>
+    <tile name="bridge" symmetry="I" />
+    <tile name="ground" symmetry="X" />
+    <tile name="river" symmetry="I" />
+    <tile name="riverturn" symmetry="L" />
+    <tile name="road" symmetry="I" />
+    <tile name="roadturn" symmetry="L" />
+    <tile name="t" symmetry="T" />
+    <tile name="tower" symmetry="L" />
+    <tile name="wall" symmetry="I" />
+    <tile name="wallriver" symmetry="I" />
+    <tile name="wallroad" symmetry="I" />
+  </tiles>
+  <neighbors>
+    <neighbor left="river" right="bridge" />
+    <neighbor left="river" right="tower" />
+    <neighbor left="river" right="roadturn" />
+    <neighbor left="river" right="ground" />
+    <neighbor left="river" right="wall" />
+    <neighbor left="river" right="road" />
+    <neighbor left="bridge" right="wall" />
+    <neighbor left="bridge" right="tower" />
+    <neighbor left="bridge" right="bridge" />
+    <neighbor left="bridge" right="road" />
+    <neighbor left="bridge" right="ground" />
+    <neighbor left="bridge" right="wallroad" />
+    <neighbor left="bridge" right="river" />
+    <neighbor left="bridge" right="t" />
+    <neighbor left="bridge" right="wallriver" />
+    <neighbor left="bridge" right="roadturn" />
+    <neighbor left="bridge" right="riverturn" />
+    <neighbor left="road" right="bridge" />
+    <neighbor left="road" right="river" />
+    <neighbor left="road" right="riverturn" />
+    <neighbor left="road" right="wall" />
+    <neighbor left="road" right="tower" />
+    <neighbor left="road" right="ground" />
+    <neighbor left="tower" right="river" />
+    <neighbor left="tower" right="bridge" />
+    <neighbor left="tower" right="riverturn" />
+    <neighbor left="tower" right="road" />
+    <neighbor left="tower" right="ground" />
+    <neighbor left="tower" right="roadturn" />
+    <neighbor left="wall" right="ground" />
+    <neighbor left="wall" right="riverturn" />
+    <neighbor left="wall" right="bridge" />
+    <neighbor left="wall" right="road" />
+    <neighbor left="wall" right="river" />
+    <neighbor left="wall" right="roadturn" />
+    <neighbor left="riverturn" right="bridge" />
+    <neighbor left="riverturn" right="wallriver" />
+    <neighbor left="ground" right="roadturn" />
+    <neighbor left="ground" right="road" />
+    <neighbor left="ground" right="river" />
+    <neighbor left="ground" right="tower" />
+    <neighbor left="ground" right="bridge" />
+    <neighbor left="ground" right="wall" />
+    <neighbor left="ground" right="ground" />
+    <neighbor left="ground" right="riverturn" />
+    <neighbor left="roadturn" right="bridge" />
+    <neighbor left="roadturn" right="wallroad" />
+    <neighbor left="roadturn" right="t" />
+    <neighbor left="wallroad" right="bridge" />
+    <neighbor left="wallroad" right="t" />
+    <neighbor left="t" right="bridge" />
+    <neighbor left="t" right="wallroad" />
+    <neighbor left="wallriver" right="bridge" />
+  </neighbors>
+</set>

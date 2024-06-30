@@ -70,6 +70,7 @@ abstract class Model
 
     public bool Run(int seed, int limit)
     {
+
         // first we create the wave that we need to iterate over... 
         if (wave == null) 
         {
@@ -108,6 +109,14 @@ abstract class Model
             }
         }
 
+        foreach (var item in observed)
+        {
+            if(item == -1)
+            {
+                return false;
+            }
+
+        }
         return true;
     }
 

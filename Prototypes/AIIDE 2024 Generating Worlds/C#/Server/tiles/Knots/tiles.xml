@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<tiles>
+  <tile name="t" weight="1" />
+  <tile name="cross" weight="1" />
+  <tile name="line" weight="1" />
+  <tile name="corner" weight="1" />
+  <tile name="empty" weight="1" />
+</tiles>
