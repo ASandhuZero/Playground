@@ -1,4 +1,4 @@
-<set>
+<set unique="True">
   <tiles>
     <tile name="corner" symmetry="X"/>
     <tile name="cross" symmetry="X"/>

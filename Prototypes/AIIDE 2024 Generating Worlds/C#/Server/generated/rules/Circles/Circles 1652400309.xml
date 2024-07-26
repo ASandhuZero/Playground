@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<set unique="true">
+  <tiles>
+    <tile name="b_half" symmetry="T" />
+    <tile name="b_i" symmetry="I" />
+    <tile name="b_quarter" symmetry="L" />
+    <tile name="w_half" symmetry="T" />
+    <tile name="w_i" symmetry="I" />
+    <tile name="w_quarter" symmetry="L" />
+    <tile name="b" symmetry="X" />
+    <tile name="w" symmetry="X" />
+  </tiles>
+  <neighbors>
+    <neighbor left="b_i 1" right="b_i 1" />
+    <neighbor left="b_i 1" right="b 0" />
+    <neighbor left="b_i 1" right="w_i 1" />
+    <neighbor left="b_i 1" right="b_quarter 3" />
+    <neighbor left="b_i 1" right="w 0" />
+    <neighbor left="b_i 1" right="b_half 3" />
+    <neighbor left="b_i 1" right="w_quarter 3" />
+    <neighbor left="b_i 1" right="w_half 3" />
+    <neighbor left="b_half 3" right="w_quarter 3" />
+    <neighbor left="b_half 3" right="b_i 1" />
+    <neighbor left="b_half 3" right="b 0" />
+    <neighbor left="b_half 3" right="w_half 3" />
+    <neighbor left="b_half 3" right="b_quarter 3" />
+    <neighbor left="b 0" right="b_quarter 3" />
+    <neighbor left="b 0" right="b 0" />
+    <neighbor left="b 0" right="w_half 3" />
+    <neighbor left="b 0" right="b_i 1" />
+    <neighbor left="b 0" right="w_quarter 3" />
+    <neighbor left="w_i 1" right="b_i 1" />
+    <neighbor left="w_i 1" right="w_i 1" />
+    <neighbor left="w_i 1" right="b_half 3" />
+    <neighbor left="w_i 1" right="w 0" />
+    <neighbor left="b_quarter 3" right="b_i 1" />
+    <neighbor left="b_quarter 3" right="b_half 3" />
+    <neighbor left="b_quarter 3" right="w 0" />
+    <neighbor left="w_half 3" right="w 0" />
+    <neighbor left="w_half 3" right="b_i 1" />
+    <neighbor left="w_half 3" right="w_i 1" />
+    <neighbor left="w_half 3" right="b_half 3" />
+    <neighbor left="w 0" right="b_i 1" />
+    <neighbor left="w 0" right="w_i 1" />
+    <neighbor left="w 0" right="w 0" />
+    <neighbor left="w_quarter 3" right="b_i 1" />
+    <neighbor left="w_quarter 3" right="b_half 3" />
+    <neighbor left="w_quarter 3" right="w_i 1" />
+    <neighbor left="w_quarter 3" right="w 0" />
+  </neighbors>
+</set>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<set unique="true">
+  <tiles>
+    <tile name="corner" symmetry="X" />
+    <tile name="cross" symmetry="X" />
+    <tile name="empty" symmetry="X" />
+    <tile name="line" symmetry="X" />
+    <tile name="t" symmetry="X" />
+  </tiles>
+  <neighbors>
+    <neighbor left="line 0" right="corner 0" />
+    <neighbor left="line 0" right="line 0" />
+    <neighbor left="line 0" right="empty 0" />
+    <neighbor left="corner 0" right="line 0" />
+    <neighbor left="corner 0" right="corner 0" />
+    <neighbor left="corner 0" right="empty 0" />
+    <neighbor left="empty 0" right="corner 0" />
+    <neighbor left="empty 0" right="empty 0" />
+    <neighbor left="empty 0" right="line 0" />
+  </neighbors>
+</set>

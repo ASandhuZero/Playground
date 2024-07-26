@@ -19,10 +19,12 @@ class SimpleTiledModel : Model
     int tilesize;
     bool blackBackground;
 
-    public SimpleTiledModel(string filepath, string name, string subsetName, int width, int height, bool periodic, bool blackBackground, Heuristic heuristic) : base(width, height, 1, periodic, heuristic)
+    public SimpleTiledModel(string filepath, string name, string subsetName, int width, int height, bool periodic, bool blackBackground, Heuristic heuristic, string tileslocation="tilesets") : base(width, height, 1, periodic, heuristic)
     {
         this.blackBackground = blackBackground;
         XElement xroot = XDocument.Load($"{filepath}/{name}.xml").Root;
+        Console.WriteLine(xroot);
+        Console.WriteLine($"{filepath}/{name}.xml");
         bool unique = xroot.Get("unique", false);
 
         List<string> subset = null;
@@ -39,9 +41,6 @@ class SimpleTiledModel : Model
             }
         }
 
-        //NOTE: this should be the thing that the overlapping
-        // model should understand as well. Take this code and see if 
-        // you can save it somewhere in the overlapping model
         static int[] tile(Func<int, int, int> f, int size)
         {
             int[] result = new int[size * size];
@@ -141,7 +140,7 @@ class SimpleTiledModel : Model
                 for (int t = 0; t < cardinality; t++)
                 {
                     int[] bitmap;
-                    (bitmap, tilesize, tilesize) = BitmapHelper.LoadBitmap($"tilesets/{name}/{tilename} {t}.png");
+                    (bitmap, tilesize, tilesize) = BitmapHelper.LoadBitmap($"{tileslocation}/{name}/{tilename} {t}.png");
                     tiles.Add(bitmap);
                     tilenames.Add($"{tilename} {t}");
                 }
@@ -149,7 +148,7 @@ class SimpleTiledModel : Model
             else
             {
                 int[] bitmap;
-                (bitmap, tilesize, tilesize) = BitmapHelper.LoadBitmap($"tilesets/{name}/{tilename}.png");
+                (bitmap, tilesize, tilesize) = BitmapHelper.LoadBitmap($"{tileslocation}/{name}/{tilename}.png");
                 tiles.Add(bitmap);
                 tilenames.Add($"{tilename} 0");
 
@@ -196,7 +195,7 @@ class SimpleTiledModel : Model
             densePropagator[0][action[R][6]][action[L][6]] = true;
             densePropagator[0][action[L][4]][action[R][4]] = true;
             densePropagator[0][action[L][2]][action[R][2]] = true;
-
+            //
             densePropagator[1][U][D] = true;
             densePropagator[1][action[D][6]][action[U][6]] = true;
             densePropagator[1][action[U][4]][action[D][4]] = true;
@@ -240,7 +239,8 @@ class SimpleTiledModel : Model
         {
             for (int x = 0; x < MX; x++) for (int y = 0; y < MY; y++)
                 {
-                    int[] tile = tiles[observed[x + y * MX]];
+                    var observedval = observed[x + y * MX];
+                    int[] tile = tiles[observedval];
                     for (int dy = 0; dy < tilesize; dy++) for (int dx = 0; dx < tilesize; dx++)
                             bitmapData[x * tilesize + dx + (y * tilesize + dy) * MX * tilesize] = tile[dx + dy * tilesize];
                 }

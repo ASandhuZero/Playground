@@ -1,1 +1,0 @@
-watercorner 1, grass 0, cliffcorner 0, cliff 2, cliffcorner 1, grass 0, road 2, road 2, road 2, road 2, roadturn 2, watercorner 3, road 0, road 0, road 0, grasscorner 2, road 1, waterside 3, cliff 0, cliffcorner 2, grass 0, road 3, road 1, watercorner 0, roadturn 2, cliffturn 0, cliffcorner 2, road 3, road 1, grass 0, road 1, grass 0, cliff 3, road 3, road 1, grass 0, 

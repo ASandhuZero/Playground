@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <tiles>
-  <tile name="transition" weight="1" />
-  <tile name="dskew" weight="1" />
-  <tile name="bridge" weight="1" />
-  <tile name="vias" weight="1" />
-  <tile name="t" weight="1" />
-  <tile name="viad" weight="1" />
-  <tile name="turn" weight="1" />
-  <tile name="skew" weight="1" />
-  <tile name="track" weight="1" />
-  <tile name="corner" weight="1" />
-  <tile name="connection" weight="1" />
-  <tile name="component" weight="1" />
-  <tile name="wire" weight="1" />
-  <tile name="substrate" weight="1" />
+  <tile name="viad 1" weight="0.6" />
+  <tile name="dskew 1" weight="0.6" />
+  <tile name="transition 3" weight="1" />
+  <tile name="skew 3" weight="1" />
+  <tile name="bridge 1" weight="0.6" />
+  <tile name="vias 3" weight="1" />
+  <tile name="turn 3" weight="1" />
+  <tile name="t 3" weight="1" />
+  <tile name="connection 3" weight="1" />
+  <tile name="wire 1" weight="0.6" />
+  <tile name="corner 3" weight="1" />
+  <tile name="track 1" weight="0.6" />
+  <tile name="substrate 0" weight="0.4" />
+  <tile name="component 0" weight="0.4" />
 </tiles>

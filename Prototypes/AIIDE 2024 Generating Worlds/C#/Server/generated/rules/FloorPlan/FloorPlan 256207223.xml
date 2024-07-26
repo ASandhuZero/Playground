@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<set unique="true">
+  <tiles>
+    <tile name="empty" symmetry="X" weight="0.1" />
+    <tile name="out" symmetry="L" />
+    <tile name="wall" symmetry="T" />
+    <tile name="in" symmetry="L" />
+    <tile name="floor" symmetry="X" />
+    <tile name="halfglass" symmetry="F" />
+    <tile name="glass" symmetry="T" />
+    <tile name="walldiv" symmetry="T" />
+    <tile name="divturn" symmetry="L" />
+    <tile name="div" symmetry="I" />
+    <tile name="divt" symmetry="T" />
+    <tile name="stairs" symmetry="T" />
+    <tile name="w" symmetry="T" />
+    <tile name="window" symmetry="T" />
+    <tile name="door" symmetry="I" weight="0.5" />
+    <tile name="vent" symmetry="X" weight="0.5" />
+    <tile name="table" symmetry="X" weight="0.8" />
+  </tiles>
+  <neighbors>
+    <neighbor left="divt 3" right="divt 3" />
+    <neighbor left="divt 3" right="door 1" />
+    <neighbor left="divt 3" right="in 3" />
+    <neighbor left="divt 3" right="vent 0" />
+    <neighbor left="divt 3" right="out 3" />
+    <neighbor left="divt 3" right="empty 0" />
+    <neighbor left="divt 3" right="divturn 3" />
+    <neighbor left="divt 3" right="table 0" />
+    <neighbor left="divt 3" right="wall 3" />
+    <neighbor left="divt 3" right="floor 0" />
+    <neighbor left="divt 3" right="halfglass 7" />
+    <neighbor left="divt 3" right="div 1" />
+    <neighbor left="divt 3" right="stairs 3" />
+    <neighbor left="divt 3" right="window 3" />
+    <neighbor left="door 1" right="divt 3" />
+    <neighbor left="door 1" right="door 1" />
+    <neighbor left="in 3" right="divt 3" />
+    <neighbor left="in 3" right="window 3" />
+    <neighbor left="vent 0" right="divt 3" />
+    <neighbor left="vent 0" right="in 3" />
+    <neighbor left="vent 0" right="divturn 3" />
+    <neighbor left="vent 0" right="div 1" />
+    <neighbor left="vent 0" right="vent 0" />
+    <neighbor left="out 3" right="empty 0" />
+    <neighbor left="empty 0" right="divt 3" />
+    <neighbor left="empty 0" right="empty 0" />
+    <neighbor left="empty 0" right="w 3" />
+    <neighbor left="empty 0" right="walldiv 3" />
+    <neighbor left="divturn 3" right="divt 3" />
+    <neighbor left="divturn 3" right="door 1" />
+    <neighbor left="table 0" right="divt 3" />
+    <neighbor left="table 0" right="div 1" />
+    <neighbor left="table 0" right="divturn 3" />
+    <neighbor left="table 0" right="table 0" />
+    <neighbor left="table 0" right="in 3" />
+    <neighbor left="table 0" right="glass 3" />
+    <neighbor left="div 1" right="divturn 3" />
+    <neighbor left="div 1" right="in 3" />
+    <neighbor left="div 1" right="vent 0" />
+    <neighbor left="div 1" right="floor 0" />
+    <neighbor left="div 1" right="divt 3" />
+    <neighbor left="div 1" right="table 0" />
+    <neighbor left="div 1" right="div 1" />
+    <neighbor left="wall 3" right="divt 3" />
+    <neighbor left="wall 3" right="wall 3" />
+    <neighbor left="floor 0" right="in 3" />
+    <neighbor left="floor 0" right="divt 3" />
+    <neighbor left="floor 0" right="divturn 3" />
+    <neighbor left="floor 0" right="floor 0" />
+    <neighbor left="floor 0" right="div 1" />
+    <neighbor left="w 3" right="floor 0" />
+    <neighbor left="w 3" right="divturn 3" />
+    <neighbor left="w 3" right="divt 3" />
+    <neighbor left="w 3" right="div 1" />
+    <neighbor left="window 3" right="out 3" />
+    <neighbor left="window 3" right="divt 3" />
+    <neighbor left="window 3" right="window 3" />
+    <neighbor left="walldiv 3" right="divt 3" />
+    <neighbor left="stairs 3" right="in 3" />
+    <neighbor left="stairs 3" right="floor 0" />
+    <neighbor left="stairs 3" right="glass 3" />
+    <neighbor left="stairs 3" right="divt 3" />
+    <neighbor left="stairs 3" right="vent 0" />
+    <neighbor left="stairs 3" right="table 0" />
+    <neighbor left="stairs 3" right="div 1" />
+    <neighbor left="stairs 3" right="divturn 3" />
+    <neighbor left="glass 3" right="empty 0" />
+    <neighbor left="halfglass 7" right="divt 3" />
+  </neighbors>
+</set>

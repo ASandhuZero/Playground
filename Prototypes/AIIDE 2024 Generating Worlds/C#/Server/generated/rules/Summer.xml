@@ -16,80 +16,142 @@
     <tile name="waterturn" symmetry="L" />
   </tiles>
   <neighbors>
-    <neighbor left="grasscorner 0" right="road 2" />
-    <neighbor left="grasscorner 0" right="roadturn 2" />
-    <neighbor left="grasscorner 2" right="grasscorner 0" />
-    <neighbor left="grasscorner 2" right="road 1" />
-    <neighbor left="roadturn 2" right="cliffcorner 0" />
-    <neighbor left="roadturn 2" right="grass 0" />
-    <neighbor left="grass 0" right="cliffcorner 0" />
-    <neighbor left="grass 0" right="grass 0" />
-    <neighbor left="grass 0" right="road 3" />
-    <neighbor left="grass 0" right="cliff 3" />
-    <neighbor left="grass 0" right="cliffturn 3" />
-    <neighbor left="grass 0" right="roadturn 0" />
-    <neighbor left="grass 0" right="cliffcorner 3" />
-    <neighbor left="grass 0" right="cliff 1" />
-    <neighbor left="grass 0" right="cliffturn 0" />
-    <neighbor left="grass 0" right="roadturn 3" />
-    <neighbor left="road 2" right="roadturn 2" />
-    <neighbor left="road 2" right="road 2" />
-    <neighbor left="road 2" right="grasscorner 1" />
-    <neighbor left="cliffcorner 0" right="cliff 2" />
-    <neighbor left="cliffcorner 0" right="cliffturn 2" />
-    <neighbor left="cliffturn 2" right="roadturn 0" />
-    <neighbor left="cliffturn 2" right="grass 0" />
-    <neighbor left="cliffturn 2" right="road 3" />
-    <neighbor left="cliff 2" right="cliffturn 2" />
-    <neighbor left="cliff 2" right="cliff 2" />
-    <neighbor left="cliff 2" right="cliffcorner 1" />
-    <neighbor left="road 3" right="road 1" />
-    <neighbor left="road 3" right="grasscorner 3" />
-    <neighbor left="road 3" right="grasscorner 0" />
-    <neighbor left="roadturn 0" right="road 0" />
-    <neighbor left="roadturn 0" right="grasscorner 2" />
-    <neighbor left="road 0" right="road 0" />
-    <neighbor left="road 0" right="roadturn 1" />
-    <neighbor left="road 0" right="grasscorner 2" />
-    <neighbor left="grasscorner 1" right="road 1" />
-    <neighbor left="grasscorner 1" right="grasscorner 0" />
-    <neighbor left="grasscorner 1" right="grasscorner 3" />
-    <neighbor left="road 1" right="cliffturn 3" />
-    <neighbor left="road 1" right="cliff 3" />
-    <neighbor left="road 1" right="grass 0" />
-    <neighbor left="road 1" right="cliffturn 0" />
-    <neighbor left="road 1" right="cliffcorner 3" />
-    <neighbor left="road 1" right="cliff 1" />
-    <neighbor left="road 1" right="cliffcorner 0" />
-    <neighbor left="roadturn 1" right="cliffturn 3" />
-    <neighbor left="roadturn 1" right="grass 0" />
-    <neighbor left="roadturn 1" right="cliff 1" />
-    <neighbor left="roadturn 1" right="watercorner 3" />
-    <neighbor left="cliffturn 3" right="cliff 2" />
-    <neighbor left="cliffturn 3" right="cliffcorner 1" />
-    <neighbor left="cliff 3" right="grass 0" />
-    <neighbor left="cliff 3" right="roadturn 3" />
-    <neighbor left="cliff 3" right="road 3" />
-    <neighbor left="cliff 3" right="roadturn 0" />
-    <neighbor left="cliffcorner 1" right="grass 0" />
-    <neighbor left="cliffcorner 1" right="road 3" />
-    <neighbor left="roadturn 3" right="road 2" />
-    <neighbor left="roadturn 3" right="grasscorner 1" />
-    <neighbor left="cliff 1" right="grass 0" />
-    <neighbor left="cliff 1" right="roadturn 3" />
-    <neighbor left="cliff 1" right="road 3" />
-    <neighbor left="cliffturn 0" right="cliff 0" />
-    <neighbor left="cliff 0" right="cliffturn 1" />
-    <neighbor left="cliff 0" right="cliff 0" />
-    <neighbor left="cliff 0" right="cliffcorner 2" />
-    <neighbor left="grasscorner 3" right="road 0" />
-    <neighbor left="grasscorner 3" right="roadturn 1" />
-    <neighbor left="cliffturn 1" right="grass 0" />
-    <neighbor left="cliffturn 1" right="road 3" />
-    <neighbor left="cliffcorner 3" right="cliff 0" />
-    <neighbor left="cliffcorner 3" right="cliffturn 1" />
-    <neighbor left="cliffcorner 2" right="road 3" />
-    <neighbor left="cliffcorner 2" right="roadturn 0" />
-    <neighbor left="cliffcorner 2" right="grass 0" />
+    <neighbor left="0" right="14" />
+    <neighbor left="0" right="1" />
+    <neighbor left="0" right="15" />
+    <neighbor left="14" right="15" />
+    <neighbor left="14" right="2" />
+    <neighbor left="14" right="20" />
+    <neighbor left="14" right="16" />
+    <neighbor left="1" right="20" />
+    <neighbor left="1" right="16" />
+    <neighbor left="1" right="15" />
+    <neighbor left="1" right="2" />
+    <neighbor left="20" right="21" />
+    <neighbor left="20" right="26" />
+    <neighbor left="2" right="3" />
+    <neighbor left="2" right="6" />
+    <neighbor left="2" right="22" />
+    <neighbor left="2" right="32" />
+    <neighbor left="21" right="6" />
+    <neighbor left="21" right="22" />
+    <neighbor left="21" right="3" />
+    <neighbor left="21" right="32" />
+    <neighbor left="3" right="12" />
+    <neighbor left="3" right="4" />
+    <neighbor left="3" right="33" />
+    <neighbor left="22" right="23" />
+    <neighbor left="22" right="27" />
+    <neighbor left="4" right="24" />
+    <neighbor left="4" right="5" />
+    <neighbor left="23" right="4" />
+    <neighbor left="23" right="12" />
+    <neighbor left="23" right="33" />
+    <neighbor left="5" right="10" />
+    <neighbor left="5" right="28" />
+    <neighbor left="5" right="7" />
+    <neighbor left="5" right="13" />
+    <neighbor left="5" right="18" />
+    <neighbor left="5" right="6" />
+    <neighbor left="5" right="11" />
+    <neighbor left="6" right="10" />
+    <neighbor left="6" right="7" />
+    <neighbor left="6" right="11" />
+    <neighbor left="6" right="6" />
+    <neighbor left="6" right="18" />
+    <neighbor left="6" right="22" />
+    <neighbor left="6" right="3" />
+    <neighbor left="6" right="13" />
+    <neighbor left="6" right="28" />
+    <neighbor left="6" right="32" />
+    <neighbor left="6" right="34" />
+    <neighbor left="6" right="37" />
+    <neighbor left="6" right="38" />
+    <neighbor left="24" right="5" />
+    <neighbor left="24" right="24" />
+    <neighbor left="24" right="30" />
+    <neighbor left="7" right="8" />
+    <neighbor left="7" right="9" />
+    <neighbor left="8" right="25" />
+    <neighbor left="8" right="9" />
+    <neighbor left="8" right="8" />
+    <neighbor left="9" right="6" />
+    <neighbor left="9" right="22" />
+    <neighbor left="9" right="3" />
+    <neighbor left="10" right="6" />
+    <neighbor left="10" right="22" />
+    <neighbor left="10" right="32" />
+    <neighbor left="10" right="3" />
+    <neighbor left="11" right="3" />
+    <neighbor left="11" right="22" />
+    <neighbor left="11" right="6" />
+    <neighbor left="11" right="32" />
+    <neighbor left="25" right="3" />
+    <neighbor left="25" right="32" />
+    <neighbor left="25" right="6" />
+    <neighbor left="12" right="13" />
+    <neighbor left="12" right="11" />
+    <neighbor left="12" right="18" />
+    <neighbor left="12" right="7" />
+    <neighbor left="12" right="6" />
+    <neighbor left="12" right="28" />
+    <neighbor left="12" right="38" />
+    <neighbor left="12" right="37" />
+    <neighbor left="12" right="34" />
+    <neighbor left="12" right="10" />
+    <neighbor left="13" right="15" />
+    <neighbor left="13" right="14" />
+    <neighbor left="13" right="1" />
+    <neighbor left="15" right="14" />
+    <neighbor left="15" right="2" />
+    <neighbor left="15" right="16" />
+    <neighbor left="15" right="1" />
+    <neighbor left="15" right="15" />
+    <neighbor left="15" right="20" />
+    <neighbor left="18" right="19" />
+    <neighbor left="18" right="26" />
+    <neighbor left="26" right="21" />
+    <neighbor left="26" right="19" />
+    <neighbor left="26" right="26" />
+    <neighbor left="19" right="14" />
+    <neighbor left="19" right="15" />
+    <neighbor left="19" right="1" />
+    <neighbor left="16" right="29" />
+    <neighbor left="16" right="17" />
+    <neighbor left="17" right="6" />
+    <neighbor left="17" right="22" />
+    <neighbor left="17" right="3" />
+    <neighbor left="27" right="23" />
+    <neighbor left="27" right="27" />
+    <neighbor left="27" right="31" />
+    <neighbor left="28" right="0" />
+    <neighbor left="28" right="29" />
+    <neighbor left="29" right="17" />
+    <neighbor left="29" right="0" />
+    <neighbor left="29" right="29" />
+    <neighbor left="30" right="12" />
+    <neighbor left="30" right="4" />
+    <neighbor left="30" right="33" />
+    <neighbor left="31" right="11" />
+    <neighbor left="31" right="6" />
+    <neighbor left="31" right="28" />
+    <neighbor left="31" right="13" />
+    <neighbor left="31" right="37" />
+    <neighbor left="32" right="30" />
+    <neighbor left="32" right="24" />
+    <neighbor left="33" right="27" />
+    <neighbor left="33" right="31" />
+    <neighbor left="34" right="35" />
+    <neighbor left="34" right="39" />
+    <neighbor left="35" right="36" />
+    <neighbor left="35" right="35" />
+    <neighbor left="35" right="39" />
+    <neighbor left="36" right="3" />
+    <neighbor left="36" right="6" />
+    <neighbor left="37" right="8" />
+    <neighbor left="37" right="25" />
+    <neighbor left="38" right="35" />
+    <neighbor left="39" right="6" />
+    <neighbor left="39" right="3" />
   </neighbors>
 </set>

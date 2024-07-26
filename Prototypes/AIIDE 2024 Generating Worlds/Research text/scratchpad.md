@@ -1,0 +1,3 @@
+Why is that adding the rotation information cause the output to be fine for the Simpletiled model? Or is the case the unique tile set is causing it to work
+
+If we have unique tiles, then the tile set is reduced... 

@@ -51,7 +51,7 @@ public class Tile
 
    public override String ToString() 
    {
-       return $"tile_image name: {name.ToString()},\n tile_image image: {tile_image.ToString()},\n pixel representation: {pixel_representation.ToString()},\n weight : {weight}";
+       return $"tile_image filename: {name.ToString()},\n tile_image image: {tile_image.ToString()},\n pixel representation: {pixel_representation.ToString()},\n weight : {weight}";
 
    }
 }
@@ -98,6 +98,7 @@ static class BitmapHelper
     {
         // TODO: So for this function we are going to have to create some kind of rotation code, that way each tile_image can be rotated all four ways, and once they are rotated, we will check the rotations against the other unique tile_images. 
         // if one of the tile_images is just a rotation, we will count that and give whatever tile_image a note about having a rotation... Maybe at this point we should
+        // so we have two options... we can create the tileset with all of the rotations and just call it a day, or we can try to figure out how to do rotations...
         List<Image<Bgra32>> rotation_checked_tiles = tiles;
         Console.WriteLine("Currently we do not check for rotations!");
 
@@ -116,7 +117,6 @@ static class BitmapHelper
 
         List<Image<Bgra32>> unique_tiles = new List<Image<Bgra32>>();
 
-        int number = 0;
         foreach(var tile_image in tile_images)
         {
             if (IsTileUnique(tile_image, unique_tiles))
@@ -127,9 +127,7 @@ static class BitmapHelper
             {
 
             }
-            number++;
         }
-        Console.WriteLine($"Number of unique tile_images: {unique_tiles.Count}");
         return unique_tiles;
     }
 
@@ -194,33 +192,24 @@ static class BitmapHelper
     private static List<Tile> MapTilesToPixels(List<Tile> tiles)
     {
 
-
-        // int inc = 255/tiles.Count;
-        //
-        // for (int i = 0; i < tiles.Count; i++)
-        // {
-        //     int val = 0 + (inc * i);
-        //     Bgra32 pixel = new Bgra32((byte)val, (byte)val, (byte)val);
-        //     tiles[i].pixel_representation = pixel;
-        //
-        // }
-
         int r = 0, g = 0, b = 0;
 
         for (int i = 0; i < tiles.Count; i++)
         {
-
             if (r < 255)
             {
-                r += 2;
+                r=r+1; 
             }
             else if (g < 255)
             {
-                g += 2;
+                g=g+1; 
+                r=0; 
             }
             else if (b < 255)
             {
-                b += 2;
+                b=b+1; 
+                r=0; 
+                g=0; 
             }
             Bgra32 pixel = new Bgra32((byte)r, (byte)g, (byte)b);
             tiles[i].pixel_representation = pixel;
@@ -313,18 +302,86 @@ static class BitmapHelper
         return tilemap;
     }
 
-    public static Dictionary<String, Image<Bgra32>> LoadSampleTileset(String name)
+    public static Dictionary<String, Image<Bgra32>> GenerateRotations(String name, String tilename, Image<Bgra32> tile, int card)
     {
-        var files = Directory.GetFiles($"tilesets/{name}");
+        Directory.CreateDirectory("test");
+        Directory.CreateDirectory($"test/{name}");
+
+
+        var generated_tiles = new Dictionary<String, Image<Bgra32>>();
+        generated_tiles.Add($"{tilename}", tile);
+        for (int i = 0; i < card; i++)
+        {
+            // tile.Mutate(img => img.Rotate(RotateMode.Rotate90));
+            // tile.SaveAsPng($"test/{filename}/{tilename} {i}.png");
+            generated_tiles.Add($"{tilename} {i}", tile);
+        }
+        return generated_tiles;
+
+    }
+    // we need to get cardinality as well
+    public static Dictionary<String, Image<Bgra32>> LoadSampleTileset(String filename, bool rotate)
+    {
+
+        var xroot = XElement.Load($"{filename}.xml");
+        var xtiles = xroot.Element("tiles");
+
+        var xtilescard = new Dictionary<String, int>();
+        foreach(var xtile in xtiles.Elements("tile"))
+        {
+            var cardinality = 1;
+            char sym = xtile.Get("symmetry", 'X');
+            if (sym == 'L')
+            {
+                cardinality = 4;
+            }
+            else if (sym == 'T')
+            {
+                cardinality = 4;
+            }
+            else if (sym == 'I')
+            {
+                cardinality = 2;
+            }
+            else if (sym == '\\')
+            {
+                cardinality = 2;
+            }
+            else if (sym == 'F')
+            {
+                cardinality = 8;
+            }
+            else
+            {
+                cardinality = 1;
+            }
+            xtilescard[xtile.Get("name", "")] = cardinality; 
+        }
+        var files = Directory.GetFiles($"{filename}");
         Dictionary<String, Image<Bgra32>> tiles = new Dictionary<String, Image<Bgra32>>();
         foreach (var file in files)
         {
             var tile_name = file.Split('/')[2].Split('.')[0];
+            var prefix = tile_name.Split(' ')[0];
+            var card = xtilescard[prefix];
+
             Image<Bgra32> tile = Image.Load<Bgra32>(file);
             
-            tiles.Add(tile_name, tile);
+            if (!xroot.Get("unique", false))
+            {
+                var rot_tiles = GenerateRotations(filename, prefix, tile, card);
+                foreach(var rot_tile in rot_tiles)
+                {
+                    if(tiles.TryGetValue(rot_tile.Key, out Image<Bgra32> index))
+                    {continue;}
+                    tiles.Add(rot_tile.Key, rot_tile.Value);
+                }
+            }
+            else
+            {
+                tiles.Add(tile_name, tile);
+            }
         }
-
         return tiles;
     }
 
@@ -346,12 +403,10 @@ static class BitmapHelper
         return tiles;
     }
 
-    // as I read this, I think that I could use the test example from the dragonquesttest function to clean up a lot of the code here and make sure everything runs cohesively, that way I can test multiple maps by having a runner function or something like that. basically a unit test thing, but at the end of the day I just want to get the grand rule coeherence thing done and also have some evaluations that I can write about. Then I want to switch to writing the paper after that.
-    // first thought lets just make sure this works.
     unsafe public static void CompressAndDepcompressTilemap(String name, int[] data, int width, int height, int tilesize, string filename)
     {
         var bitmap_name = $"bitmap_{name}";
-        Console.WriteLine($"name: {name}");
+        Console.WriteLine($"filename: {name}");
         fixed (int* pData = data)
         {
             Random random = new();
@@ -366,8 +421,8 @@ static class BitmapHelper
 
             tiles = MapTilesToPixels(tiles);
 
-            //WARNING: You hardcoded the name of the file... Please fix this.
-            var original_tiles = LoadSampleTileset("Summer");
+            //WARNING: You hardcoded the filename of the file... Please fix this.
+            var original_tiles = LoadSampleTileset("Summer", false);
 
             // so now we have to go through the original tile_images, compare them with the tile_images that we have right now and then create a new mapping.
             foreach(var item in original_tiles)
@@ -391,7 +446,7 @@ static class BitmapHelper
             // bool is_map_generated = false;
             // while (!is_map_generated)
             // {
-            //     is_map_generated = GenerateTilemapFromBitmap(bitmap_name, width/tilesize, height/tilesize, seed, tiles, name);
+            //     is_map_generated = GenerateTilemapFromBitmap(bitmap_name, width/tilesize, height/tilesize, seed, tiles, filename);
             //     // NOTE: Please refactor this.
             //     if(!is_map_generated)
             //     {
@@ -459,7 +514,7 @@ static class BitmapHelper
 
     }
     // compare rulesets against each other. Do a naive approach which is seeing how similar the rulesets are. For every rule that they share in common that is a plus one, and the total of the rules will then be used to compare. so it will be shared rules / total rules
-    public static void GetRuleSimiliarity(XElement crafted_rules, XElement generated_rules)
+    public static void GetRuleSimiliarity(String name, XElement crafted_rules, XElement generated_rules, bool output)
     {
         // XElement crafted_rules = XDocument.Load("tilesets/Summer.xml").Root;
         // XElement generated_rules = XDocument.Load("Summer 40x40_neighbors.xml").Root;
@@ -483,11 +538,16 @@ static class BitmapHelper
         var crafted_rule_count =crafted_rules.Descendants("neighbors").Descendants("neighbor").Count(); 
 
         var similiarity = (float)matching/(float)crafted_rule_count;
-        Console.WriteLine($"similiarity between rulesets : {similiarity}");
         var total = (float)matching/(float)generated_rule_count;
-        Console.WriteLine($"total generated matching: {total}");
-        Console.WriteLine($"generated ruleset count: {generated_rule_count}");
-        Console.WriteLine($"crafted ruleset count: {crafted_rule_count}");
+        if(output)
+        {
+           
+            Console.WriteLine($"Rule similiarity of compiled rules, {name}");
+            Console.WriteLine($"total similiarity matching: {similiarity}");
+            Console.WriteLine($"total generated matching: {total}");
+            Console.WriteLine($"generated ruleset count: {generated_rule_count}");
+            Console.WriteLine($"crafted ruleset count: {crafted_rule_count}");
+        }
 
     }
 
@@ -537,7 +597,7 @@ static class BitmapHelper
 
 
         // check to see if there is an
-        var original_tiles = LoadSampleTileset($"{name}");
+        var original_tiles = LoadSampleTileset($"{name}", true);
 
         // so now we have to go through the original tile_images, compare them with the tile_images that we have right now and then create a new mapping.
         foreach(var item in original_tiles)
@@ -558,8 +618,9 @@ static class BitmapHelper
         foreach (var tile in tiles)
         {
             tile.weight = tile.weight / max;
+            max = tile.weight > max ? tile.weight : max;
             XElement xtile = new XElement("tile");
-            xtile.SetAttributeValue("name", tile.name);
+            xtile.SetAttributeValue("filename", tile.name);
             xtile.SetAttributeValue("weight", tile.weight);
             xtiles.Add(xtile);
         }
@@ -609,7 +670,7 @@ static class BitmapHelper
 
         // while (!is_map_generated)
         // {
-        //     // is_map_generated = GenerateTilemapFromBitmap(bitmap_name, width/tilesize, height/tilesize, seed, tiles, name);
+        //     // is_map_generated = GenerateTilemapFromBitmap(bitmap_name, width/tilesize, height/tilesize, seed, tiles, filename);
         //     if(!is_map_generated)
         //     {
         //         seed = random.Next();
@@ -658,7 +719,7 @@ static class BitmapHelper
         heuristic = Model.Heuristic.Entropy;
 
         //TODO: I don't know if I want this here but lets keep it here for right now, and I think it should be fine... lmao
-        int div = 1;
+        int div = 3;
         bool shouldDiv = false;
         if (shouldDiv)
         {
@@ -687,17 +748,17 @@ static class BitmapHelper
         Console.WriteLine($"generated/simpletiled/{name} {width}x{width}.png has been saved"); 
     }
 
-    public static void SimpleTileTest(int model_type, string filepath, string filename, string extension, int tilesize, int width)
+    public static void SimpleTileTest(int model_type, string filepath, string filename, string extension, int tilesize, int width, bool hastiles)
     {
         var rules = XElement.Load($"generated/rules/{filename}.xml");
         var name = filename; 
         XElement xelem = rules;
-        string subset = xelem.Get<string>("subset");
-        bool blackBackground = xelem.Get("blackBackground", false);
+        string subset = xelem.Get<string>("subset"); bool blackBackground = xelem.Get("blackBackground", false);
         var periodic = false;
         var heuristic = Model.Heuristic.Entropy;
 
-        var tile_model = new SimpleTiledModel("generated/rules", name, subset, width, width, periodic, blackBackground, heuristic);
+        var tileloc = hastiles ? "tilesets" : "tiles";
+        var tile_model = new SimpleTiledModel("generated/rules", name, subset, width, width, periodic, blackBackground, heuristic, tileloc);
 
         Random random = new();
         int seed = random.Next();
@@ -706,16 +767,26 @@ static class BitmapHelper
 
         while(!success)
         {
-            success = tile_model.Run(seed, -1);
-            Console.WriteLine($"success: {success}");
+
+            try
+            {
+                seed = random.Next();
+                success = tile_model.Run(seed, -1);
+                Console.WriteLine($"success: {success}");
+                tile_model.Save($"generated/simpletiled/{name} {width}x{width}.png");
+                if (tile_model is SimpleTiledModel stmodel && xelem.Get("textOutput", false))
+                {
+                  System.IO.File.WriteAllText($"output/{name} {seed}.txt", stmodel.TextOutput());
+                }
+            }
+            catch
+            {
+
+                success = false;
+            }
         }
         Console.WriteLine("Generated new simpletiledtile_model output, now saving as image");
 
-        tile_model.Save($"generated/simpletiled/{name} {width}x{width}.png");
-        if (tile_model is SimpleTiledModel stmodel && xelem.Get("textOutput", false))
-        {
-          System.IO.File.WriteAllText($"output/{name} {seed}.txt", stmodel.TextOutput());
-        }
 
         Console.WriteLine($"generated/simpletiled/{name} {width}x{width}.png has been saved"); 
     }
@@ -723,7 +794,7 @@ static class BitmapHelper
     // ... all we want to test is just the overlapping model right there and extract the rules basically
     // right now this function seems to be doing a little too much and idk if I like that.
     // we really should be saving tiles in there own function
-    public static void OverlappingTestWithTestObject(int model_type, String nameseed, String filepath, String extension, bool isTileset)
+    public static void OverlappingTestWithTestObject(int model_type, String nameseed, String filepath, String extension, bool isTileset, bool output)
     {
         String[] name_arr = nameseed.Split();
         var name = name_arr[0];
@@ -734,31 +805,36 @@ static class BitmapHelper
 
 
         Image<Bgra32> image;
-        // this should be the last time that we use the filenames and seed name
+        // this should be the last time that we use the filenames and seed filename
         image = Image.Load<Bgra32>($"{filepath}/{name} {seedname}");
-
 
         int height = image.Height;
         int width = image.Width;
         int tilesize = 0;
 
-        // we don't need to extract ima
         // Console.WriteLine("Extracting tile_images for bitmap downscaling");
         // var tile_images = ExtractTiles(image, test.tilesize);
         var tile_images = new List<Image<Bgra32>>();
-        var og_tiles = LoadSampleTileset($"{name}");
+        var og_tiles = LoadSampleTileset($"{name}", true);
 
         foreach(var tile in og_tiles)
         {
             tile_images.Add(tile.Value);
         }
+
         tilesize = tile_images[0].Width;
 
         // really really we should be pulling all of these things out into their own functions, this is getting a little annoying, but keep working through it.
-        Console.WriteLine("Getting unique tile_images");
+        if(output)
+        {
+            Console.WriteLine("Getting unique tile_images");
+        }
         List<Image<Bgra32>> unique_tiles = GetUniqueTiles(tile_images, tilesize);
 
-        Console.WriteLine($"Saving tile_images to tiles/{name}");
+        if (output)
+        { 
+            Console.WriteLine($"Saving tile_images to tiles/{name}");
+        }
         int count = 0;
         if (!Directory.Exists($"tiles/{name}"))
         {
@@ -769,12 +845,19 @@ static class BitmapHelper
             item.SaveAsPng($"tiles/{name}/{count}.png");
             count++;
         }
-        Console.WriteLine("===== Tiles have been saved! ===== ");
+        if (output)
+        {
+            Console.WriteLine("===== Tiles have been saved! ===== ");
+            Console.WriteLine("Creating tile_images in list format for later computation.");
+        }
         
-        Console.WriteLine("Creating tile_images in list format for later computation.");
         List<Tile> tiles = ConvertToTiles(unique_tiles);
 
-        Console.WriteLine("Getting tile weights");
+        if(output)
+        {
+            Console.WriteLine("Getting tile weights");
+        }
+
         tiles = GetTileWeights(tiles, tile_images);
         float max = 0;
 
@@ -783,12 +866,15 @@ static class BitmapHelper
             max = tile.weight > max ? tile.weight : max;
         }
 
-        Console.WriteLine("adjust weight and create a new tile xelement");
+        if(output)
+        {
+            Console.WriteLine("adjust weight and create a new tile xelement");
+        }
 
         /// we should have the tile set location be passed into the function, the tile extraction should be its own function.
         if (isTileset)
         {
-            var original_tiles = LoadSampleTileset($"{name}");
+            var original_tiles = LoadSampleTileset($"{name}", true);
             foreach(var item in original_tiles)
             {
                 foreach(var generated_tile in tiles)
@@ -800,27 +886,63 @@ static class BitmapHelper
                 }
             }
         }
-        Console.WriteLine($"=============tiles have been created===================================");
+        if(output)
+        {
+            Console.WriteLine($"=============tiles have been created===================================");
+        }
 
         XElement xtiles = new XElement("tiles");
         foreach (var tile in tiles)
         {
-            tile.weight = tile.weight / max;
+            // tile.weight = tile.weight / max > 0.1f ? tile.weight / max : 0.1f;
+            float weight = tile.weight / max;
+            if (weight < 0.1f)
+            {
+                weight = 0.1f;
+
+            }
+            tile.weight = weight;
             XElement xtile = new XElement("tile");
-            xtile.SetAttributeValue("name", tile.name);
+            xtile.SetAttributeValue("filename", tile.name);
             xtile.SetAttributeValue("weight", tile.weight);
             xtiles.Add(xtile);
         }
         
-        Console.WriteLine("Saving tiles in an XML format");
+        if(output)
+        {
+            Console.WriteLine("Saving tiles in an XML format");
+        }
 
         xtiles.Save($"tiles/{name}/tiles.xml");
-        Console.WriteLine("Mapping tile_image to pixels.");
+        if (isTileset)
+        {
+            var original_tiles = LoadSampleTileset($"{name}", true);
+            foreach(var item in original_tiles)
+            {
+                foreach(var generated_tile in tiles)
+                {
+                    if(ComparePixels(generated_tile.tile_image, item.Value))
+                    {
+                        generated_tile.name = item.Key;
+                    }
+                }
+            }
+        }
+        if(output)
+        {
+            Console.WriteLine("Mapping tile_image to pixels.");
+        }
         tiles = MapTilesToPixels(tiles);
 
-        Console.WriteLine("================ Downscaling image to bitmap");
+        if(output)
+        {
+            Console.WriteLine("================ Downscaling image to bitmap");
+        }
         Image<Bgra32> bitmap = DownscaleImageToBitmap(image, tilesize, tiles);
-        Console.WriteLine("Saving bitmap");
+        if(output)
+        {
+            Console.WriteLine("Saving bitmap");
+        }
         var bitmap_name = $"bitmap_{name}";
 
         bitmap.SaveAsPng($"samples/bitmaps/{name}.png");
@@ -828,7 +950,10 @@ static class BitmapHelper
         Random random = new();
         int seed = random.Next();
 
-        Console.WriteLine($"Generating rules from {name} image by running the overlapping model now");
+        if(output)
+        {
+            Console.WriteLine($"Generating rules from {name} image by running the overlapping model now");
+        }
 
         // NOTE: Putting overlapping code inside of all this nonsense because generateTilemapFromBitmap is just a bad function at this point.
         int N = 2;
@@ -854,11 +979,14 @@ static class BitmapHelper
 
                 // oh no this is bad code because it seems that I just save the neighbors here... I shouldn't just 
                 // save the rules but return them so that way I ca
-                Console.WriteLine($"Overlapping bitmap has been saved at samples/bitmaps/{name}.png and rules have been saved at generated/rules/{name}.xml");
+                if(output)
+                {
+                    Console.WriteLine($"Overlapping bitmap has been saved at samples/bitmaps/{name}.png and rules have been saved at generated/rules/{name}.xml");
+                }
                 break;
             } else 
             {
-                Console.WriteLine("CONTRADICTION");
+                // Console.WriteLine("CONTRADICTION");
             }
         }
         // we need to save the output as well
@@ -868,7 +996,6 @@ static class BitmapHelper
 
         Image<Bgra32> upscaled_image = UpscaleBitmapToImage(bitmapFromModel, tilesize, tiles);
         upscaled_image.SaveAsPng($"generated/upscaled/{name} {width}.png");
-        Console.WriteLine($"{width/tilesize}, {height/tilesize}");
 
 
         // now you want to generate the tiles and neighbors xml right here and then give that to the xelem
@@ -889,22 +1016,21 @@ static class BitmapHelper
         }
         rules.Add(neighbors);
 
-        Console.WriteLine("===============saving generated rules===================");
+        if(output)
+        {
+            Console.WriteLine("===============saving generated rules===================");
+        }
         rules.Save($"generated/rules/{name}/{name} {seed}.xml");
         XElement xelem = rules;
     }
-    public static void OverlappingTest(int model_type, string filepath, string filename, string extension, int tilesize, bool isTileset)
+    public static bool OverlappingTest(int model_type, string filepath, string filename, string extension, int tilesize, bool isTileset)
     {
         Console.WriteLine($"< {filename}");
 
         var name = filename;
 
-        // this is assuming we are going to do an overlapping generation first
-        
         Image<Bgra32> image;
         image = Image.Load<Bgra32>($"{filepath}/{name}{extension}");
-
-
 
         int height = image.Height;
         int width = image.Width;
@@ -925,7 +1051,7 @@ static class BitmapHelper
         }
         foreach (var item in unique_tiles)
         {
-            item.SaveAsPng($"tiles/{name}/{count}.png");
+            item.SaveAsPng($"tiles/{name}/{count} 0.png");
             count++;
         }
         Console.WriteLine("===== Tiles have been saved! ===== ");
@@ -945,12 +1071,11 @@ static class BitmapHelper
 
         Console.WriteLine("adjust weight and create a new tile xelement");
 
-        //do we need these here?
         if (isTileset)
         {
 
-            Console.WriteLine(name);
-            var original_tiles = LoadSampleTileset($"{name}");
+            XElement existing_tiles = XElement.Load($"tilesets/{name}.xml").Element("tiles");
+            var original_tiles = LoadSampleTileset($"tilesets/{name}", true);
             foreach(var item in original_tiles)
             {
                 foreach(var generated_tile in tiles)
@@ -958,26 +1083,39 @@ static class BitmapHelper
                     if(ComparePixels(generated_tile.tile_image, item.Value))
                     {
                         generated_tile.name = item.Key;
-                        Console.WriteLine(generated_tile);
                     }
                 }
             }
         }
         Console.WriteLine($"=============tiles have been created===================================");
 
+        var min = 0.6f;
         XElement xtiles = new XElement("tiles");
         foreach (var tile in tiles)
         {
-            tile.weight = tile.weight / max;
+            // tile.weight = tile.weight / max;
+            float weight = tile.weight / max;
+            if (weight < min)
+            {
+                weight = min;
+
+            }
+            tile.weight = weight;
             XElement xtile = new XElement("tile");
             xtile.SetAttributeValue("name", tile.name);
             xtile.SetAttributeValue("weight", tile.weight);
             xtiles.Add(xtile);
         }
         
+        if(isTileset)
+        {
+            var xroot = XElement.Load($"tilesets/{name}.xml");
+            xtiles = xroot.Element("tiles");
+            Console.WriteLine("hello there");
+        }
         Console.WriteLine("Saving tiles in an XML format");
 
-        xtiles.Save($"tiles/{name}/tiles.xml");
+        // xtiles.Save($"tiles/{name}/tiles.xml");
         Console.WriteLine("Mapping tile_image to pixels.");
         tiles = MapTilesToPixels(tiles);
 
@@ -995,8 +1133,8 @@ static class BitmapHelper
         Console.WriteLine("Generating rules from overworld image by running the overlapping model now");
 
         // NOTE: Putting overlapping code inside of all this nonsense because generateTilemapFromBitmap is just a bad function at this point.
+        // lmao all of this code is bad code
         int N = 2;
-        // oh no.
         bool periodicInput = false;
         int symmetry = 1;
         bool ground = false;
@@ -1007,22 +1145,34 @@ static class BitmapHelper
         var model = new OverlappingModel("samples/bitmaps", name, N, width/tilesize, height/tilesize, periodicInput, periodic, symmetry, ground, heuristic);
 
         bool success = false;
-        success = model.Run(seed, -1);
-
-        if (success)
+        while(!success)
         {
-            
-            Console.WriteLine("DONE");
-            model.Save($"samples/bitmaps/{name}.png");
+            try 
+            {
+                seed = random.Next();
+                success = model.Run(seed, -1);
+                if (success)
+                {
 
-            Console.WriteLine("Overlapping image and rules have been saved");
-        } else 
-        {
-            Console.WriteLine("CONTRADICTION");
+                    Console.WriteLine("DONE");
+                    success = model.SaveImg($"generated/bitmaps/{name}.png");
+
+                } else 
+                {
+                    Console.WriteLine("CONTRADICTION");
+                }
+            }
+            catch (Exception e)
+            {
+                success=false;
+            }
+
         }
+
+        Console.WriteLine("Overlapping image and rules have been saved");
         // we need to save the output as well
 
-        using var bitmapFromModel = Image.Load<Bgra32>($"samples/bitmaps/{name}.png");
+        using var bitmapFromModel = Image.Load<Bgra32>($"generated/bitmaps/{name}.png");
 
         Image<Bgra32> upscaled_image = UpscaleBitmapToImage(bitmapFromModel, tilesize, tiles);
         upscaled_image.SaveAsPng($"generated/upscaled/{name} {width}.png");
@@ -1034,13 +1184,13 @@ static class BitmapHelper
         rules.SetAttributeValue("unique", true);
         XElement neighbors = model.ExtractRules(tiles);
         // we should first check to see if there are tiles that already exist from a ruleset and 
-        Console.WriteLine(name);
         if (File.Exists($"tilesets/{name}.xml"))
         {
             XElement existing_tiles = XElement.Load($"tilesets/{name}.xml").Element("tiles");
             rules.Add(existing_tiles);
             //we should do a some transformation here and make sure we get the actual tile names... or just make sure 
             //we do that at some point, honestly
+            
         }
         else 
         {
@@ -1050,7 +1200,12 @@ static class BitmapHelper
 
         Console.WriteLine("===============saving generated rules===================");
         rules.Save($"generated/rules/{name}.xml");
-        XElement xelem = rules;
+        XElement xelem = new XElement("set");
+        Console.WriteLine($"generated/rules/{name}.xml");
+        // xelem.SetAttributeValue("unique", true);
+        // xelem.Add(rules.Element("neighbors"));
+        // xelem.Save($"generated/rules/{name}.xml");
+        return success;
     }
 
 }

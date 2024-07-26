@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<set unique="true">
+  <tiles>
+    <tile name="bridge" symmetry="I" weight="1.0" />
+    <tile name="component" symmetry="X" weight="20.0" />
+    <tile name="connection" symmetry="T" weight="10.0" />
+    <tile name="corner" symmetry="L" weight="10.0" />
+    <tile name="substrate" symmetry="X" weight="2.0" />
+    <tile name="t" symmetry="T" weight="0.1" />
+    <tile name="track" symmetry="I" weight="2.0" />
+    <tile name="transition" symmetry="T" weight="0.4" />
+    <tile name="turn" symmetry="L" weight="1.0" />
+    <tile name="viad" symmetry="I" weight="0.1" />
+    <tile name="vias" symmetry="T" weight="0.3" />
+    <tile name="wire" symmetry="I" weight="0.5" />
+    <tile name="skew" symmetry="L" weight="2.0" />
+    <tile name="dskew" symmetry="\" weight="2.0" />
+  </tiles>
+  <neighbors>
+    <neighbor left="viad 1" right="viad 1" />
+    <neighbor left="viad 1" right="track 1" />
+    <neighbor left="viad 1" right="skew 3" />
+    <neighbor left="viad 1" right="corner 3" />
+    <neighbor left="viad 1" right="bridge 1" />
+    <neighbor left="viad 1" right="connection 3" />
+    <neighbor left="viad 1" right="substrate 0" />
+    <neighbor left="viad 1" right="transition 3" />
+    <neighbor left="viad 1" right="dskew 1" />
+    <neighbor left="viad 1" right="turn 3" />
+    <neighbor left="viad 1" right="vias 3" />
+    <neighbor left="viad 1" right="t 3" />
+    <neighbor left="viad 1" right="wire 1" />
+    <neighbor left="track 1" right="viad 1" />
+    <neighbor left="track 1" right="dskew 1" />
+    <neighbor left="track 1" right="track 1" />
+    <neighbor left="track 1" right="bridge 1" />
+    <neighbor left="track 1" right="connection 3" />
+    <neighbor left="track 1" right="transition 3" />
+    <neighbor left="track 1" right="t 3" />
+    <neighbor left="dskew 1" right="viad 1" />
+    <neighbor left="dskew 1" right="bridge 1" />
+    <neighbor left="dskew 1" right="dskew 1" />
+    <neighbor left="dskew 1" right="track 1" />
+    <neighbor left="dskew 1" right="transition 3" />
+    <neighbor left="dskew 1" right="connection 3" />
+    <neighbor left="skew 3" right="dskew 1" />
+    <neighbor left="skew 3" right="track 1" />
+    <neighbor left="skew 3" right="connection 3" />
+    <neighbor left="skew 3" right="bridge 1" />
+    <neighbor left="skew 3" right="t 3" />
+    <neighbor left="skew 3" right="transition 3" />
+    <neighbor left="skew 3" right="viad 1" />
+    <neighbor left="corner 3" right="viad 1" />
+    <neighbor left="corner 3" right="skew 3" />
+    <neighbor left="corner 3" right="turn 3" />
+    <neighbor left="corner 3" right="substrate 0" />
+    <neighbor left="bridge 1" right="viad 1" />
+    <neighbor left="bridge 1" right="connection 3" />
+    <neighbor left="bridge 1" right="track 1" />
+    <neighbor left="connection 3" right="component 0" />
+    <neighbor left="component 0" right="viad 1" />
+    <neighbor left="component 0" right="component 0" />
+    <neighbor left="substrate 0" right="viad 1" />
+    <neighbor left="substrate 0" right="skew 3" />
+    <neighbor left="substrate 0" right="turn 3" />
+    <neighbor left="substrate 0" right="substrate 0" />
+    <neighbor left="substrate 0" right="vias 3" />
+    <neighbor left="transition 3" right="viad 1" />
+    <neighbor left="turn 3" right="viad 1" />
+    <neighbor left="turn 3" right="connection 3" />
+    <neighbor left="turn 3" right="track 1" />
+    <neighbor left="turn 3" right="bridge 1" />
+    <neighbor left="vias 3" right="dskew 1" />
+    <neighbor left="vias 3" right="viad 1" />
+    <neighbor left="vias 3" right="track 1" />
+    <neighbor left="t 3" right="viad 1" />
+    <neighbor left="t 3" right="turn 3" />
+    <neighbor left="t 3" right="substrate 0" />
+    <neighbor left="wire 1" right="viad 1" />
+    <neighbor left="wire 1" right="wire 1" />
+  </neighbors>
+</set>

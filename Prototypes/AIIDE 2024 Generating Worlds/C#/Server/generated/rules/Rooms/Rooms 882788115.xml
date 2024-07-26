@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<set unique="true">
+  <tiles>
+    <tile name="bend" symmetry="L" weight="0.5" />
+    <tile name="corner" symmetry="L" weight="0.5" />
+    <tile name="corridor" symmetry="I" weight="1.0" />
+    <tile name="door" symmetry="T" weight="0.5" />
+    <tile name="empty" symmetry="X" />
+    <tile name="side" symmetry="T" weight="2.0" />
+    <tile name="t" symmetry="T" weight="0.5" />
+    <tile name="turn" symmetry="L" weight="0.25" />
+    <tile name="wall" symmetry="X" />
+  </tiles>
+  <neighbors>
+    <neighbor left="side 3" right="side 3" />
+    <neighbor left="side 3" right="empty 0" />
+    <neighbor left="side 3" right="wall 0" />
+    <neighbor left="side 3" right="corridor 1" />
+    <neighbor left="side 3" right="corner 3" />
+    <neighbor left="side 3" right="door 3" />
+    <neighbor left="side 3" right="turn 3" />
+    <neighbor left="side 3" right="t 3" />
+    <neighbor left="empty 0" right="side 3" />
+    <neighbor left="empty 0" right="bend 3" />
+    <neighbor left="empty 0" right="empty 0" />
+    <neighbor left="wall 0" right="side 3" />
+    <neighbor left="wall 0" right="corner 3" />
+    <neighbor left="wall 0" right="wall 0" />
+    <neighbor left="wall 0" right="turn 3" />
+    <neighbor left="corridor 1" right="door 3" />
+    <neighbor left="corridor 1" right="side 3" />
+    <neighbor left="corridor 1" right="corridor 1" />
+    <neighbor left="corridor 1" right="t 3" />
+    <neighbor left="corner 3" right="side 3" />
+    <neighbor left="bend 3" right="side 3" />
+    <neighbor left="door 3" right="empty 0" />
+    <neighbor left="turn 3" right="corridor 1" />
+    <neighbor left="turn 3" right="door 3" />
+    <neighbor left="turn 3" right="side 3" />
+    <neighbor left="t 3" right="corner 3" />
+    <neighbor left="t 3" right="side 3" />
+  </neighbors>
+</set>

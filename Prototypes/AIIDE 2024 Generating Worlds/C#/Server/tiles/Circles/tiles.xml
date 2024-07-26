@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <tiles>
-  <tile name="b_half" weight="1" />
-  <tile name="b_quarter" weight="1" />
-  <tile name="b" weight="1" />
-  <tile name="w" weight="1" />
-  <tile name="w_quarter" weight="1" />
-  <tile name="w_half" weight="1" />
-  <tile name="w_i" weight="1" />
-  <tile name="b_i" weight="1" />
+  <tile name="b_i 1" weight="0.6" />
+  <tile name="b_half 3" weight="1" />
+  <tile name="b_quarter 3" weight="1" />
+  <tile name="w_half 3" weight="1" />
+  <tile name="b 0" weight="0.4" />
+  <tile name="w_quarter 3" weight="1" />
+  <tile name="w 0" weight="0.4" />
+  <tile name="w_i 1" weight="0.6" />
 </tiles>

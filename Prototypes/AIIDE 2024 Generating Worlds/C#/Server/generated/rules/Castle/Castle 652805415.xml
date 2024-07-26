@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<set unique="true">
+  <tiles>
+    <tile name="bridge" symmetry="I" />
+    <tile name="ground" symmetry="X" />
+    <tile name="river" symmetry="I" />
+    <tile name="riverturn" symmetry="L" />
+    <tile name="road" symmetry="I" />
+    <tile name="roadturn" symmetry="L" />
+    <tile name="t" symmetry="T" />
+    <tile name="tower" symmetry="L" />
+    <tile name="wall" symmetry="I" />
+    <tile name="wallriver" symmetry="I" />
+    <tile name="wallroad" symmetry="I" />
+  </tiles>
+  <neighbors>
+    <neighbor left="wallriver 1" right="wallriver 1" />
+    <neighbor left="wallriver 1" right="bridge 1" />
+    <neighbor left="wallriver 1" right="roadturn 3" />
+    <neighbor left="wallriver 1" right="tower 3" />
+    <neighbor left="wallriver 1" right="river 1" />
+    <neighbor left="wallriver 1" right="riverturn 3" />
+    <neighbor left="wallriver 1" right="t 3" />
+    <neighbor left="wallriver 1" right="wall 1" />
+    <neighbor left="wallriver 1" right="ground 0" />
+    <neighbor left="wallriver 1" right="road 1" />
+    <neighbor left="wallriver 1" right="wallroad 1" />
+    <neighbor left="riverturn 3" right="wallriver 1" />
+    <neighbor left="riverturn 3" right="wall 1" />
+    <neighbor left="riverturn 3" right="ground 0" />
+    <neighbor left="riverturn 3" right="tower 3" />
+    <neighbor left="t 3" right="wallriver 1" />
+    <neighbor left="t 3" right="ground 0" />
+    <neighbor left="t 3" right="tower 3" />
+    <neighbor left="t 3" right="wall 1" />
+    <neighbor left="tower 3" right="wallriver 1" />
+    <neighbor left="tower 3" right="wallroad 1" />
+    <neighbor left="tower 3" right="ground 0" />
+    <neighbor left="wallroad 1" right="tower 3" />
+    <neighbor left="wallroad 1" right="wallriver 1" />
+    <neighbor left="bridge 1" right="riverturn 3" />
+    <neighbor left="bridge 1" right="wallriver 1" />
+    <neighbor left="bridge 1" right="river 1" />
+    <neighbor left="river 1" right="river 1" />
+    <neighbor left="river 1" right="riverturn 3" />
+    <neighbor left="river 1" right="bridge 1" />
+    <neighbor left="river 1" right="wallriver 1" />
+    <neighbor left="roadturn 3" right="wall 1" />
+    <neighbor left="roadturn 3" right="wallriver 1" />
+    <neighbor left="roadturn 3" right="ground 0" />
+    <neighbor left="roadturn 3" right="tower 3" />
+    <neighbor left="wall 1" right="wallriver 1" />
+    <neighbor left="wall 1" right="ground 0" />
+    <neighbor left="ground 0" right="wallriver 1" />
+    <neighbor left="ground 0" right="tower 3" />
+    <neighbor left="ground 0" right="wall 1" />
+    <neighbor left="ground 0" right="ground 0" />
+    <neighbor left="road 1" right="t 3" />
+    <neighbor left="road 1" right="wallriver 1" />
+    <neighbor left="road 1" right="roadturn 3" />
+    <neighbor left="road 1" right="road 1" />
+  </neighbors>
+</set>

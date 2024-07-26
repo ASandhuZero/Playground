@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<set unique="true">
+  <neighbors>
+    <neighbor left="b_i 7" right="b_i 7" />
+    <neighbor left="b_i 7" right="b_half 7" />
+    <neighbor left="b_i 7" right="b 7" />
+    <neighbor left="b_i 7" right="b_quarter 7" />
+    <neighbor left="b_i 7" right="w_half 7" />
+    <neighbor left="b_i 7" right="w_quarter 7" />
+    <neighbor left="b_i 7" right="w 7" />
+    <neighbor left="w_quarter 7" right="b_i 7" />
+    <neighbor left="w_quarter 7" right="w 7" />
+    <neighbor left="w_quarter 7" right="b_half 7" />
+    <neighbor left="w 7" right="w 7" />
+    <neighbor left="w 7" right="b_i 7" />
+    <neighbor left="w 7" right="b_half 7" />
+    <neighbor left="b_half 7" right="w 7" />
+    <neighbor left="b_half 7" right="b_i 7" />
+    <neighbor left="b_half 7" right="b_half 7" />
+    <neighbor left="b 7" right="b_i 7" />
+    <neighbor left="b 7" right="w_half 7" />
+    <neighbor left="b 7" right="w_quarter 7" />
+    <neighbor left="b 7" right="b 7" />
+    <neighbor left="b_quarter 7" right="b_i 7" />
+    <neighbor left="b_quarter 7" right="w 7" />
+    <neighbor left="b_quarter 7" right="b_half 7" />
+    <neighbor left="w_half 7" right="b_half 7" />
+    <neighbor left="w_half 7" right="w 7" />
+    <neighbor left="w_half 7" right="b_i 7" />
+    <neighbor left="b 7" right="b_quarter 7" />
+  </neighbors>
+  <tiles>
+    <tile name="b_half" symmetry="T" />
+    <tile name="b_i" symmetry="I" />
+    <tile name="b_quarter" symmetry="L" />
+    <tile name="w_half" symmetry="T" />
+    <tile name="w_i" symmetry="I" />
+    <tile name="w_quarter" symmetry="L" />
+    <tile name="b" symmetry="X" />
+    <tile name="w" symmetry="X" />
+  </tiles>
+</set>

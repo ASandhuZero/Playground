@@ -115,11 +115,8 @@ class MyTcpListener
   public TileArray GenerateTilemap(Specsheet data, int model_type)
   {
     // TODO: There's got to be a better name for this I think.
-    Console.WriteLine(model_type);
     TileArray tarray = new TileArray();
     Stopwatch sw = Stopwatch.StartNew();
-    var folder = System.IO.Directory.CreateDirectory("output");
-    foreach (var file in folder.GetFiles()) { file.Delete(); }
 
     Random random = new();
     XDocument xdoc = XDocument.Load("samples.xml");
@@ -153,6 +150,7 @@ class MyTcpListener
         string subset = xelem.Get<string>("subset");
         bool blackBackground = xelem.Get("blackBackground", false);
 
+        //WARNING: this is a mistake and should be passed in as a parameter
         string filepath = "tilesets";
         model = new SimpleTiledModel(filepath, name, subset, width, height, periodic, blackBackground, heuristic);
       }

@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <tiles>
-  <tile name="divt" weight="1" />
-  <tile name="div" weight="1" />
-  <tile name="walldiv" weight="1" />
-  <tile name="glass" weight="1" />
-  <tile name="floor" weight="1" />
-  <tile name="table" weight="1" />
-  <tile name="door" weight="1" />
-  <tile name="in" weight="1" />
-  <tile name="halfglass" weight="1" />
-  <tile name="w" weight="1" />
-  <tile name="divturn" weight="1" />
-  <tile name="stairs" weight="1" />
-  <tile name="empty" weight="1" />
-  <tile name="vent" weight="1" />
-  <tile name="out" weight="1" />
-  <tile name="window" weight="1" />
-  <tile name="wall" weight="1" />
+  <tile name="divt 3" weight="0.5555556" />
+  <tile name="out 3" weight="0.5555556" />
+  <tile name="walldiv 3" weight="0.5555556" />
+  <tile name="floor 0" weight="0.22222222" />
+  <tile name="table 0" weight="0.22222222" />
+  <tile name="halfglass 7" weight="1" />
+  <tile name="in 3" weight="0.5555556" />
+  <tile name="glass 3" weight="0.5555556" />
+  <tile name="wall 3" weight="0.5555556" />
+  <tile name="div 1" weight="0.33333334" />
+  <tile name="door 1" weight="0.33333334" />
+  <tile name="empty 0" weight="0.22222222" />
+  <tile name="window 3" weight="0.5555556" />
+  <tile name="divturn 3" weight="0.5555556" />
+  <tile name="stairs 3" weight="0.5555556" />
+  <tile name="vent 0" weight="0.22222222" />
+  <tile name="w 3" weight="0.5555556" />
 </tiles>

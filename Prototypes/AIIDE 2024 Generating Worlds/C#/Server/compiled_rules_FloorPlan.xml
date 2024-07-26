@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<set unique="true">
+  <neighbors>
+    <neighbor left="in 7" right="in 7" />
+    <neighbor left="in 7" right="floor 7" />
+    <neighbor left="in 7" right="div 7" />
+    <neighbor left="in 7" right="empty 7" />
+    <neighbor left="in 7" right="out 7" />
+    <neighbor left="in 7" right="stairs 7" />
+    <neighbor left="in 7" right="window 7" />
+    <neighbor left="in 7" right="door 7" />
+    <neighbor left="in 7" right="vent 7" />
+    <neighbor left="in 7" right="table 7" />
+    <neighbor left="in 7" right="divturn 7" />
+    <neighbor left="in 7" right="divt 7" />
+    <neighbor left="in 7" right="w 7" />
+    <neighbor left="in 7" right="glass 7" />
+    <neighbor left="divturn 7" right="floor 7" />
+    <neighbor left="divturn 7" right="in 7" />
+    <neighbor left="divturn 7" right="vent 7" />
+    <neighbor left="divturn 7" right="table 7" />
+    <neighbor left="floor 7" right="floor 7" />
+    <neighbor left="floor 7" right="in 7" />
+    <neighbor left="div 7" right="in 7" />
+    <neighbor left="div 7" right="div 7" />
+    <neighbor left="div 7" right="divt 7" />
+    <neighbor left="div 7" right="divturn 7" />
+    <neighbor left="div 7" right="door 7" />
+    <neighbor left="div 7" right="stairs 7" />
+    <neighbor left="empty 7" right="in 7" />
+    <neighbor left="empty 7" right="empty 7" />
+    <neighbor left="empty 7" right="walldiv 7" />
+    <neighbor left="empty 7" right="wall 7" />
+    <neighbor left="empty 7" right="halfglass 7" />
+    <neighbor left="out 7" right="empty 7" />
+    <neighbor left="w 7" right="empty 7" />
+    <neighbor left="walldiv 7" right="door 7" />
+    <neighbor left="walldiv 7" right="div 7" />
+    <neighbor left="walldiv 7" right="divt 7" />
+    <neighbor left="walldiv 7" right="in 7" />
+    <neighbor left="door 7" right="divturn 7" />
+    <neighbor left="door 7" right="div 7" />
+    <neighbor left="door 7" right="in 7" />
+    <neighbor left="door 7" right="door 7" />
+    <neighbor left="door 7" right="stairs 7" />
+    <neighbor left="door 7" right="divt 7" />
+    <neighbor left="stairs 7" right="in 7" />
+    <neighbor left="stairs 7" right="door 7" />
+    <neighbor left="stairs 7" right="div 7" />
+    <neighbor left="window 7" right="out 7" />
+    <neighbor left="window 7" right="in 7" />
+    <neighbor left="window 7" right="window 7" />
+    <neighbor left="divt 7" right="in 7" />
+    <neighbor left="divt 7" right="div 7" />
+    <neighbor left="vent 7" right="in 7" />
+    <neighbor left="vent 7" right="vent 7" />
+    <neighbor left="table 7" right="table 7" />
+    <neighbor left="table 7" right="in 7" />
+    <neighbor left="wall 7" right="in 7" />
+    <neighbor left="wall 7" right="vent 7" />
+    <neighbor left="wall 7" right="table 7" />
+    <neighbor left="halfglass 7" right="in 7" />
+    <neighbor left="glass 7" right="in 7" />
+    <neighbor left="floor 7" right="w 7" />
+    <neighbor left="wall 7" right="floor 7" />
+    <neighbor left="walldiv 7" right="divturn 7" />
+    <neighbor left="table 7" right="w 7" />
+    <neighbor left="vent 7" right="w 7" />
+    <neighbor left="divt 7" right="door 7" />
+    <neighbor left="glass 7" right="glass 7" />
+    <neighbor left="divt 7" right="10" />
+    <neighbor left="divt 7" right="16" />
+    <neighbor left="divt 7" right="divt 7" />
+    <neighbor left="divt 7" right="14" />
+    <neighbor left="divt 7" right="vent 7" />
+    <neighbor left="divt 7" right="floor 7" />
+    <neighbor left="divt 7" right="6" />
+    <neighbor left="divt 7" right="empty 7" />
+    <neighbor left="divt 7" right="13" />
+    <neighbor left="divt 7" right="table 7" />
+    <neighbor left="divt 7" right="out 7" />
+    <neighbor left="divt 7" right="11" />
+    <neighbor left="divt 7" right="5" />
+    <neighbor left="divt 7" right="2" />
+    <neighbor left="divt 7" right="8" />
+    <neighbor left="divt 7" right="stairs 7" />
+    <neighbor left="floor 7" right="divt 7" />
+    <neighbor left="floor 7" right="13" />
+    <neighbor left="floor 7" right="14" />
+    <neighbor left="floor 7" right="6" />
+    <neighbor left="floor 7" right="5" />
+    <neighbor left="13" right="empty 7" />
+    <neighbor left="empty 7" right="divt 7" />
+    <neighbor left="10" right="divt 7" />
+    <neighbor left="10" right="10" />
+    <neighbor left="10" right="11" />
+    <neighbor left="10" right="stairs 7" />
+    <neighbor left="16" right="divt 7" />
+    <neighbor left="16" right="2" />
+    <neighbor left="16" right="out 7" />
+    <neighbor left="16" right="16" />
+    <neighbor left="14" right="11" />
+    <neighbor left="14" right="10" />
+    <neighbor left="14" right="divt 7" />
+    <neighbor left="14" right="stairs 7" />
+    <neighbor left="vent 7" right="14" />
+    <neighbor left="vent 7" right="6" />
+    <neighbor left="vent 7" right="divt 7" />
+    <neighbor left="11" right="10" />
+    <neighbor left="11" right="divt 7" />
+    <neighbor left="11" right="11" />
+    <neighbor left="11" right="stairs 7" />
+    <neighbor left="6" right="16" />
+    <neighbor left="6" right="divt 7" />
+    <neighbor left="6" right="2" />
+    <neighbor left="table 7" right="divt 7" />
+    <neighbor left="table 7" right="6" />
+    <neighbor left="table 7" right="14" />
+    <neighbor left="wall 7" right="14" />
+    <neighbor left="wall 7" right="divt 7" />
+    <neighbor left="stairs 7" right="10" />
+    <neighbor left="stairs 7" right="11" />
+    <neighbor left="stairs 7" right="divt 7" />
+    <neighbor left="5" right="empty 7" />
+    <neighbor left="2" right="divt 7" />
+    <neighbor left="2" right="out 7" />
+    <neighbor left="2" right="16" />
+    <neighbor left="8" right="divt 7" />
+    <neighbor left="8" right="8" />
+    <neighbor left="divturn 7" right="w 7" />
+    <neighbor left="halfglass 7" right="vent 7" />
+    <neighbor left="halfglass 7" right="floor 7" />
+  </neighbors>
+  <tiles>
+    <tile name="empty" symmetry="X" weight="0.1" />
+    <tile name="out" symmetry="L" />
+    <tile name="wall" symmetry="T" />
+    <tile name="in" symmetry="L" />
+    <tile name="floor" symmetry="X" />
+    <tile name="halfglass" symmetry="F" />
+    <tile name="glass" symmetry="T" />
+    <tile name="walldiv" symmetry="T" />
+    <tile name="divturn" symmetry="L" />
+    <tile name="div" symmetry="I" />
+    <tile name="divt" symmetry="T" />
+    <tile name="stairs" symmetry="T" />
+    <tile name="w" symmetry="T" />
+    <tile name="window" symmetry="T" />
+    <tile name="door" symmetry="I" weight="0.5" />
+    <tile name="vent" symmetry="X" weight="0.5" />
+    <tile name="table" symmetry="X" weight="0.8" />
+  </tiles>
+</set>

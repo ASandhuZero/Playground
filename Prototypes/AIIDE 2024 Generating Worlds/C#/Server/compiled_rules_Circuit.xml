@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<set unique="true">
+  <neighbors>
+    <neighbor left="viad 7" right="viad 7" />
+    <neighbor left="viad 7" right="corner 7" />
+    <neighbor left="viad 7" right="track 7" />
+    <neighbor left="viad 7" right="connection 7" />
+    <neighbor left="viad 7" right="t 7" />
+    <neighbor left="viad 7" right="substrate 7" />
+    <neighbor left="viad 7" right="dskew 7" />
+    <neighbor left="viad 7" right="vias 7" />
+    <neighbor left="viad 7" right="turn 7" />
+    <neighbor left="viad 7" right="wire 7" />
+    <neighbor left="viad 7" right="transition 7" />
+    <neighbor left="viad 7" right="skew 7" />
+    <neighbor left="viad 7" right="bridge 7" />
+    <neighbor left="dskew 7" right="connection 7" />
+    <neighbor left="dskew 7" right="viad 7" />
+    <neighbor left="dskew 7" right="dskew 7" />
+    <neighbor left="dskew 7" right="t 7" />
+    <neighbor left="dskew 7" right="track 7" />
+    <neighbor left="connection 7" right="component 7" />
+    <neighbor left="component 7" right="viad 7" />
+    <neighbor left="component 7" right="component 7" />
+    <neighbor left="corner 7" right="viad 7" />
+    <neighbor left="corner 7" right="substrate 7" />
+    <neighbor left="corner 7" right="skew 7" />
+    <neighbor left="track 7" right="viad 7" />
+    <neighbor left="track 7" right="connection 7" />
+    <neighbor left="track 7" right="track 7" />
+    <neighbor left="track 7" right="dskew 7" />
+    <neighbor left="t 7" right="skew 7" />
+    <neighbor left="t 7" right="viad 7" />
+    <neighbor left="t 7" right="substrate 7" />
+    <neighbor left="t 7" right="turn 7" />
+    <neighbor left="skew 7" right="connection 7" />
+    <neighbor left="skew 7" right="track 7" />
+    <neighbor left="skew 7" right="viad 7" />
+    <neighbor left="skew 7" right="dskew 7" />
+    <neighbor left="substrate 7" right="skew 7" />
+    <neighbor left="substrate 7" right="substrate 7" />
+    <neighbor left="substrate 7" right="turn 7" />
+    <neighbor left="substrate 7" right="viad 7" />
+    <neighbor left="vias 7" right="viad 7" />
+    <neighbor left="vias 7" right="track 7" />
+    <neighbor left="vias 7" right="bridge 7" />
+    <neighbor left="vias 7" right="t 7" />
+    <neighbor left="vias 7" right="dskew 7" />
+    <neighbor left="turn 7" right="track 7" />
+    <neighbor left="turn 7" right="viad 7" />
+    <neighbor left="turn 7" right="connection 7" />
+    <neighbor left="turn 7" right="bridge 7" />
+    <neighbor left="wire 7" right="viad 7" />
+    <neighbor left="wire 7" right="wire 7" />
+    <neighbor left="wire 7" right="transition 7" />
+    <neighbor left="transition 7" right="viad 7" />
+    <neighbor left="transition 7" right="dskew 7" />
+    <neighbor left="bridge 7" right="connection 7" />
+    <neighbor left="bridge 7" right="dskew 7" />
+    <neighbor left="substrate 7" right="vias 7" />
+    <neighbor left="turn 7" right="t 7" />
+    <neighbor left="track 7" right="bridge 7" />
+    <neighbor left="track 7" right="t 7" />
+    <neighbor left="skew 7" right="bridge 7" />
+    <neighbor left="skew 7" right="t 7" />
+    <neighbor left="bridge 7" right="viad 7" />
+    <neighbor left="bridge 7" right="bridge 7" />
+    <neighbor left="bridge 7" right="track 7" />
+    <neighbor left="corner 7" right="vias 7" />
+    <neighbor left="dskew 7" right="bridge 7" />
+    <neighbor left="bridge 7" right="t 7" />
+    <neighbor left="corner 7" right="turn 7" />
+    <neighbor left="transition 7" right="track 7" />
+    <neighbor left="transition 7" right="t 7" />
+    <neighbor left="t 7" right="vias 7" />
+  </neighbors>
+  <tiles>
+    <tile name="bridge" symmetry="I" weight="1.0" />
+    <tile name="component" symmetry="X" weight="20.0" />
+    <tile name="connection" symmetry="T" weight="10.0" />
+    <tile name="corner" symmetry="L" weight="10.0" />
+    <tile name="substrate" symmetry="X" weight="2.0" />
+    <tile name="t" symmetry="T" weight="0.1" />
+    <tile name="track" symmetry="I" weight="2.0" />
+    <tile name="transition" symmetry="T" weight="0.4" />
+    <tile name="turn" symmetry="L" weight="1.0" />
+    <tile name="viad" symmetry="I" weight="0.1" />
+    <tile name="vias" symmetry="T" weight="0.3" />
+    <tile name="wire" symmetry="I" weight="0.5" />
+    <tile name="skew" symmetry="L" weight="2.0" />
+    <tile name="dskew" symmetry="\" weight="2.0" />
+  </tiles>
+</set>

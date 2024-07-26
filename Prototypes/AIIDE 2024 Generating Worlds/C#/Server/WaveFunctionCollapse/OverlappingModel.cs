@@ -39,6 +39,7 @@ class OverlappingModel : Model
     {
         //NOTE: You should make a new pixel to pattern map here.
         var (bitmap, SX, SY) = BitmapHelper.LoadBitmap($"{filepath}/{name}.png");
+        Console.WriteLine($"bitmap has been loaded from {filepath}/{name}.png");
         byte[] sample = new byte[bitmap.Length];
         // colors are actually the pixel colors themselves, so follow that.
         colors = new List<int>();
@@ -76,8 +77,6 @@ class OverlappingModel : Model
         static byte[] rotate(byte[] p, int N) => pattern((x, y) => p[N - 1 - y + x * N], N);
         static byte[] reflect(byte[] p, int N) => pattern((x, y) => p[N - 1 - x + y * N], N);
 
-        // I think hash ensures that each pattern has it's own unique identifier
-        // ahhh, so I am starting to see why there are so many patterns, basically each pixel will have a pattern and that will capture all relationships, the problem is that since the patterns are NxN rather than looking at the adjacent pixels and taking that pixel value and mapping it to a relationship dictionary, WFC will look at the filter that is being passed through the image, then from those patterns, it will know that if a specific pixel is there, then it should only allow the other patterns around it.
         static long hash(byte[] p, int C)
         {
             long result = 0, power = 1;
@@ -183,6 +182,75 @@ class OverlappingModel : Model
         }
     }
 
+    public bool SaveImg(string filename)
+    {
+        Console.WriteLine($"pattern count: {patterns.Count}");
+        var boole = observed[0] >= 0;
+        foreach (var item in observed)
+        {
+            if (item == -1)
+            {
+                Console.WriteLine(item);
+                return false;
+            }
+            
+        }
+        int[] bitmap = new int[MX * MY];
+        if (boole)
+        {
+            for (int y = 0; y < MY; y++)
+            {
+                int dy = y < MY - N + 1 ? 0 : N - 1;
+                for (int x = 0; x < MX; x++)
+                {
+                    int dx = x < MX - N + 1 ? 0 : N - 1;
+                    int i = x - dx + (y - dy) * MX;
+                    int j = dx + dy * N;
+
+                    var observed_index = observed[i];
+                    var pattern_index = patterns[observed_index][j];
+                    bitmap[x + y * MX] = colors[pattern_index];
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < wave.Length; i++)
+            {
+                int contributors = 0, r = 0, g = 0, b = 0;
+                int x = i % MX, y = i / MX;
+                for (int dy = 0; dy < N; dy++) for (int dx = 0; dx < N; dx++)
+                    {
+                        int sx = x - dx;
+                        if (sx < 0) sx += MX;
+
+                        int sy = y - dy;
+                        if (sy < 0) sy += MY;
+
+                        int s = sx + sy * MX;
+                        if (!periodic && (sx + N > MX || sy + N > MY || sx < 0 || sy < 0))
+                        { 
+                            continue;
+                        }
+                        for (int t = 0; t < T; t++)
+                        {
+                            if (wave[s][t])
+                            {
+                                contributors++;
+                                int argb = colors[patterns[t][dx + dy * N]];
+                                r += (argb & 0xff0000) >> 16;
+                                g += (argb & 0xff00) >> 8;
+                                b += argb & 0xff;
+                            }
+                        }
+                    }
+                Console.WriteLine(contributors);
+                bitmap[i] = unchecked((int)0xff000000 | ((r / contributors) << 16) | ((g / contributors) << 8) | b / contributors);
+            }
+        }
+        BitmapHelper.SaveBitmap(bitmap, MX, MY, filename);
+        return true;
+    }
     public override void Save(string filename)
     {
         var boole = observed[0] >= 0;
@@ -243,6 +311,7 @@ class OverlappingModel : Model
                             }
                         }
                     }
+                Console.WriteLine(contributors);
                 bitmap[i] = unchecked((int)0xff000000 | ((r / contributors) << 16) | ((g / contributors) << 8) | b / contributors);
             }
         }
@@ -259,13 +328,13 @@ class OverlappingModel : Model
         // Now we need to get the name of the tiles and have that be the thing that we save.
         foreach (var item in colors)
         {
-
             int r = 0, g = 0, b = 0;
             int argb = item;
             r += (argb & 0xff0000) >> 16;
             g += (argb & 0xff00) >> 8;
             b += argb & 0xff;
             Bgra32 pixel = new Bgra32((byte)r, (byte)g, (byte)b);
+            
             foreach(var tile in tiles)
             {
                 if(tile.pixel_representation.Equals(pixel))
