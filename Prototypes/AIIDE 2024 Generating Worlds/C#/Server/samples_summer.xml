@@ -1,6 +1,0 @@
-<samples>
-  <simpletiled name="Summer" size="6" width="10" height="10" periodic="False" textOutput="True"/>
-  <simpletiled name="Summer" size="6" width="20" height="20" periodic="False" textOutput="True"/>
-  <simpletiled name="Summer" size="6" width="30" height="30" periodic="False" textOutput="True"/>
-  <simpletiled name="Summer" size="6" width="40" height="40" periodic="False" textOutput="True"/>
-</samples>
