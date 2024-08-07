@@ -1,5 +1,14 @@
 README.md
 ==========================================================================
+## How to run
+
+- [ ] Figure out how to run this program. And write out the steps on how to do it.
+
+### Lua 
+
+Run the game using love2D.
+
+
 ## Random thoughts 
 
 I think that there still needs to be some debugging layer or debugging logger so we can better understand what is going on within the functions.
@@ -18,6 +27,7 @@ corresponding tilemaps to create an annotation layer.
 That annotation layer should then be passed into WFC. 
 
 # Features
+
 
 - [ ] Input image file through gui
 - [ ] Watch the generation process occur.
