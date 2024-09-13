@@ -38,6 +38,9 @@ That annotation layer should then be passed into WFC.
 I guess the easiest way would be to create convolution layer that will transpose the tilemap into a pixel bitmap that we can send through the overlapping model.
 
 - [ ] Create a way for WFC to learn from a set of images.
+- [ ] Make sure you aren't pushing up the build config stuff for c# and just bloating the heck out of your repo... So we should look for a gitignore
+
+
 
 - [ ] Figure out how the overlapping model generates the association
 - [ ] Save these associations in some data format for later use
